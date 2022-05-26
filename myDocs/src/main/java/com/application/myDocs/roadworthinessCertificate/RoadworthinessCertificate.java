@@ -58,8 +58,8 @@ public class RoadworthinessCertificate {
 	@Column(name = "date_of_next_periodical_test")
 	private LocalDate dateOfNextPeriodicalTest;
 
-	@Column(name = "inspector_name")
-	private String inspectorName;
+	@Column(name = "inspection_organisation_name")
+	private String inspectionOrganisationName;
 
 	@Column(name = "entry_in_the_national_db")
 	private String entryInTheNationalDb;
@@ -152,14 +152,6 @@ public class RoadworthinessCertificate {
 		this.dateOfNextPeriodicalTest = dateOfNextPeriodicalTest;
 	}
 
-	public String getInspectorName() {
-		return inspectorName;
-	}
-
-	public void setInspectorName(String inspectorName) {
-		this.inspectorName = inspectorName;
-	}
-
 	public String getEntryInTheNationalDb() {
 		return entryInTheNationalDb;
 	}
@@ -176,5 +168,13 @@ public class RoadworthinessCertificate {
 	public void removeDefects(Defects defects) {
 		this.defects.remove(defects);
 		defects.setRoadworthinessCertificate(null);
+	}
+
+	public String getInspectionOrganisationName() {
+		return inspectionOrganisationName;
+	}
+
+	public void setInspectionOrganisationName(String inspectionOrganisationName) {
+		this.inspectionOrganisationName = inspectionOrganisationName;
 	}
 }

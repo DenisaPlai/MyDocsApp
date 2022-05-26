@@ -1,9 +1,7 @@
 package com.application.myDocs.driver;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,14 +15,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.application.modul3.author.Author;
 import com.application.myDocs.car.Car;
 import com.application.myDocs.check.Check;
 import com.application.myDocs.drivingLicense.DrivingLicense;
 import com.application.myDocs.identityCard.IdentityCard;
 
 @Entity
-@Table(name = "user", schema = "administration")
+@Table(name = "driver", schema = "administration")
 public class Driver {
 
 	@Id
@@ -47,13 +44,7 @@ public class Driver {
 	@Column(name = "expired_documents")
 	private boolean expiredDocuments;
 
-	@Column(name = "picture")
-	private byte[] picture;
-
-	@Column(name = "qr_code")
-	private byte[] qrCode;
-
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "driver", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Check> ckecks = new ArrayList<>();
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
@@ -106,22 +97,6 @@ public class Driver {
 
 	public void setExpiredDocuments(boolean expiredDocuments) {
 		this.expiredDocuments = expiredDocuments;
-	}
-
-	public byte[] getPicture() {
-		return picture;
-	}
-
-	public void setPicture(byte[] picture) {
-		this.picture = picture;
-	}
-
-	public byte[] getQrCode() {
-		return qrCode;
-	}
-
-	public void setQrCode(byte[] qrCode) {
-		this.qrCode = qrCode;
 	}
 
 	public List<Check> getCkecks() {

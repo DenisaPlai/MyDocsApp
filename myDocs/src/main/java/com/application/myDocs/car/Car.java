@@ -47,9 +47,6 @@ public class Car {
 	@Column(name = "vehicle_identity_card_id")
 	private VehicleIdentityCard vehicleIdentityCard;
 
-	@Column(name = "qr_code")
-	private byte[] qrCode;
-
 	public Integer getId() {
 		return id;
 	}
@@ -88,14 +85,6 @@ public class Car {
 
 	public void setVehicleIdentityCard(VehicleIdentityCard vehicleIdentityCard) {
 		this.vehicleIdentityCard = vehicleIdentityCard;
-	}
-
-	public byte[] getQrCode() {
-		return qrCode;
-	}
-
-	public void setQrCode(byte[] qrCode) {
-		this.qrCode = qrCode;
 	}
 	
 	public List<RoadVignette> getRoadVignettes() {

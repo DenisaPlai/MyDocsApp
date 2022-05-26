@@ -38,12 +38,6 @@ public class Police {
 	@Column(name = "code")
 	private String code;
 
-	@Column(name = "picture")
-	private byte[] picture;
-
-	@Column(name = "qr_code")
-	private byte[] qrCode;
-
 	@OneToMany(mappedBy = "police", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Check> ckecks = new ArrayList<>();
 
@@ -95,22 +89,6 @@ public class Police {
 		this.code = code;
 	}
 
-	public byte[] getPicture() {
-		return picture;
-	}
-
-	public void setPicture(byte[] picture) {
-		this.picture = picture;
-	}
-
-	public byte[] getQrCode() {
-		return qrCode;
-	}
-
-	public void setQrCode(byte[] qrCode) {
-		this.qrCode = qrCode;
-	}
-
 	public List<Check> getCkecks() {
 		return ckecks;
 	}
@@ -118,7 +96,7 @@ public class Police {
 	public void setCkecks(List<Check> ckecks) {
 		this.ckecks = ckecks;
 	}
-	
+
 	public void addCheck(Check ckeck) {
 		this.ckecks.add(ckeck);
 		ckeck.setPolice(this);
