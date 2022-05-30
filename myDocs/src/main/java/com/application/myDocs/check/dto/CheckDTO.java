@@ -3,15 +3,12 @@ package com.application.myDocs.check.dto;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import com.application.myDocs.fine.Fine;
-
 public class CheckDTO {
 	private Integer id;
 	private LocalDate date;
 	private LocalTime time;
 	private String place;
 	private String observation;
-	private Fine fine;
 
 	public Integer getId() {
 		return id;
@@ -51,14 +48,6 @@ public class CheckDTO {
 
 	public void setObservation(String observation) {
 		this.observation = observation;
-	}
-
-	public Fine getFine() {
-		return fine;
-	}
-
-	public void setFine(Fine fine) {
-		this.fine = fine;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.application.myDocs.category;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,10 @@ public class CategoryService {
 
 	public void deleteCategoryById(Integer id) {
 		categoryRepository.deleteById(id);
+	}
+
+	public List<Category> getAllCategory() {
+		return categoryRepository.findAll();
 	}
 
 }

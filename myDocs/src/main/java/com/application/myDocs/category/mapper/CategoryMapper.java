@@ -1,5 +1,8 @@
 package com.application.myDocs.category.mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Component;
 
 import com.application.myDocs.category.Category;
@@ -24,5 +27,9 @@ public class CategoryMapper {
 		categoryDTO.setIssuedDate(category.getIssuedDate());
 		categoryDTO.setExpirationDate(category.getExpirationDate());
 		return categoryDTO;
+	}
+
+	public List<CategoryDTO> categoryList2CategoryListDTO(List<Category> list) {
+		return list.stream().map(category -> category2CategoryDTO(category)).collect(Collectors.toList());
 	}
 }

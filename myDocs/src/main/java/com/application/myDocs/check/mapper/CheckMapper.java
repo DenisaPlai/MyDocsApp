@@ -15,7 +15,6 @@ public class CheckMapper {
 		checkDTO.setTime(check.getTime());
 		checkDTO.setPlace(check.getPlace());
 		checkDTO.setObservation(check.getObservation());
-		checkDTO.setFine(check.getFine());
 		return checkDTO;
 	}
 
@@ -26,7 +25,6 @@ public class CheckMapper {
 		check.setTime(checkDTO.getTime());
 		check.setPlace(checkDTO.getPlace());
 		check.setObservation(checkDTO.getObservation());
-		check.setFine(checkDTO.getFine());
 		return check;
 	}
 }
