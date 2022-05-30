@@ -1,6 +1,6 @@
 package com.application.myDocs.defects.dto;
 
-import com.application.myDocs.categoryEnum.CarCategory;
+import com.application.myDocs.CarCategory.CarCategory;
 
 public class DefectsDTO {
 

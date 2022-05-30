@@ -6,11 +6,13 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.application.myDocs.civilAutoLiability.CivilAutoLiability;
@@ -29,13 +31,13 @@ public class Car {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name = "vehicle_registration_certificate_id")
+    @OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "car")
 	private VehicleRegistrationCertificate vehicleRegistrationCertificate;
 
-	@Column(name = "roadworthiness_certificate_id")
+    @OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "car")
 	private RoadworthinessCertificate roadworthinessCertificate;
 
-	@Column(name = "civil_auto_liability_id")
+    @OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "car")
 	private CivilAutoLiability civilAutoLiability;
 
 	@OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -44,7 +46,7 @@ public class Car {
 	@ManyToMany(mappedBy="cars")
 	private List<Driver> drivers = new ArrayList<>();
 
-	@Column(name = "vehicle_identity_card_id")
+    @OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "car")
 	private VehicleIdentityCard vehicleIdentityCard;
 
 	public Integer getId() {

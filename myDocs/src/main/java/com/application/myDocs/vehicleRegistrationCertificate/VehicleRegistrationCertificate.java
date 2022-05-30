@@ -6,15 +6,19 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.application.myDocs.categoryEnum.CarCategory;
+import com.application.myDocs.CarCategory.CarCategory;
+import com.application.myDocs.car.Car;
 
 @Entity
-@Table(name = "vehicle_registration certificate", schema = "administration")
+@Table(name = "vehicle_registration_certificate", schema = "administration")
 public class VehicleRegistrationCertificate {
 
 	@Id
@@ -79,6 +83,10 @@ public class VehicleRegistrationCertificate {
 
 	@Column(name = "expiration_date")
 	private LocalDate expirationDate;
+
+	@OneToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "car_id", nullable = false)
+	private Car car;
 
 	public Integer getId() {
 		return id;
@@ -239,4 +247,13 @@ public class VehicleRegistrationCertificate {
 	public void setExpirationDate(LocalDate expirationDate) {
 		this.expirationDate = expirationDate;
 	}
+
+	public Car getCar() {
+		return car;
+	}
+
+	public void setCar(Car car) {
+		this.car = car;
+	}
+
 }

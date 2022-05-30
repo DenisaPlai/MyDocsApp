@@ -1,19 +1,21 @@
 package com.application.myDocs.civilAutoLiability;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.application.myDocs.category.Category;
+import com.application.myDocs.CarCategory.CarCategory;
+import com.application.myDocs.car.Car;
 import com.application.myDocs.territorialValidity.TerritorialValidity;
 
 @Entity
@@ -49,13 +51,14 @@ public class CivilAutoLiability {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "vehicle_category")
-	private Category vehicleCategory;
+	private CarCategory vehicleCategory;
 
 	@Column(name = "make_of_vehicle")
 	private String makeOfVehicle;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "territorial_validity")
-	private List<TerritorialValidity> territorialValidity = new ArrayList<>();
+	private TerritorialValidity territorialValidity;
 
 	@Column(name = "limit_compensation_for_material_damage")
 	private Integer limitCompensationForMaterialDamage;
@@ -68,6 +71,18 @@ public class CivilAutoLiability {
 
 	@Column(name = "price")
 	private Integer price;
+
+	@OneToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "car_id", nullable = false)
+	private Car car;
+
+	public Car getCar() {
+		return car;
+	}
+
+	public void setCar(Car car) {
+		this.car = car;
+	}
 
 	public Integer getId() {
 		return id;
@@ -133,14 +148,6 @@ public class CivilAutoLiability {
 		this.series = series;
 	}
 
-	public Category getVehicleCategory() {
-		return vehicleCategory;
-	}
-
-	public void setVehicleCategory(Category vehicleCategory) {
-		this.vehicleCategory = vehicleCategory;
-	}
-
 	public String getMakeOfVehicle() {
 		return makeOfVehicle;
 	}
@@ -149,11 +156,11 @@ public class CivilAutoLiability {
 		this.makeOfVehicle = makeOfVehicle;
 	}
 
-	public List<TerritorialValidity> getTerritorialValidity() {
+	public TerritorialValidity getTerritorialValidity() {
 		return territorialValidity;
 	}
 
-	public void setTerritorialValidity(List<TerritorialValidity> territorialValidity) {
+	public void setTerritorialValidity(TerritorialValidity territorialValidity) {
 		this.territorialValidity = territorialValidity;
 	}
 
@@ -188,4 +195,13 @@ public class CivilAutoLiability {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
+
+	public CarCategory getVehicleCategory() {
+		return vehicleCategory;
+	}
+
+	public void setVehicleCategory(CarCategory vehicleCategory) {
+		this.vehicleCategory = vehicleCategory;
+	}
+
 }

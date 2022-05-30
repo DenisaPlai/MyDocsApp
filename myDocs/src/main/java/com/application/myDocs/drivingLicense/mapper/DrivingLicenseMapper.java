@@ -1,8 +1,11 @@
 package com.application.myDocs.drivingLicense.mapper;
 
+import org.springframework.stereotype.Component;
+
 import com.application.myDocs.drivingLicense.DrivingLicense;
 import com.application.myDocs.drivingLicense.dto.DrivingLicenseDTO;
 
+@Component
 public class DrivingLicenseMapper {
 
 	public DrivingLicenseDTO drivingLicense2DrivingLicenseDTO(DrivingLicense drivingLicense) {

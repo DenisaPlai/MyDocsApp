@@ -7,13 +7,17 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.application.myDocs.category.Category;
+import com.application.myDocs.driver.Driver;
 
 @Entity
 @Table(name = "driving_license", schema = "administration")
@@ -45,7 +49,11 @@ public class DrivingLicense {
 	@Column(name = "suspended")
 	private boolean suspended;
 
-	@OneToMany(mappedBy = "driving_license", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "driver_id", nullable = false)
+	private Driver driver;
+
+	@OneToMany(mappedBy = "drivingLicense", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Category> categories = new ArrayList<>();
 
 	public Integer getId() {
@@ -118,6 +126,14 @@ public class DrivingLicense {
 
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
+	}
+
+	public Driver getDriver() {
+		return driver;
+	}
+
+	public void setDriver(Driver driver) {
+		this.driver = driver;
 	}
 
 	public void addCategory(Category category) {

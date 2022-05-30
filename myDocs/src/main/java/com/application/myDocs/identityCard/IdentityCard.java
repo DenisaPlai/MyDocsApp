@@ -6,11 +6,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.application.myDocs.driver.Driver;
 import com.application.myDocs.gender.Gender;
 
 @Entity
@@ -58,6 +62,10 @@ public class IdentityCard {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "sex")
 	private Gender sex;
+
+	@OneToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "driver_id", nullable = false)
+	private Driver driver;
 
 	public Integer getId() {
 		return id;
@@ -162,4 +170,13 @@ public class IdentityCard {
 	public void setSex(Gender sex) {
 		this.sex = sex;
 	}
+
+	public Driver getDriver() {
+		return driver;
+	}
+
+	public void setDriver(Driver driver) {
+		this.driver = driver;
+	}
+
 }

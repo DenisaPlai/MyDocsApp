@@ -9,12 +9,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.application.myDocs.car.Car;
 import com.application.myDocs.defects.Defects;
 import com.application.myDocs.territorialValidity.TerritorialValidity;
 
@@ -27,7 +31,7 @@ public class RoadworthinessCertificate {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@OneToMany(mappedBy = "roadworthiness_certificate", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "roadworthinessCertificate", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Defects> defects = new ArrayList<>();
 
 	@Column(name = "vin_number")
@@ -63,6 +67,18 @@ public class RoadworthinessCertificate {
 
 	@Column(name = "entry_in_the_national_db")
 	private String entryInTheNationalDb;
+
+	@OneToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "car_id", nullable = false)
+	private Car car;
+
+	public Car getCar() {
+		return car;
+	}
+
+	public void setCar(Car car) {
+		this.car = car;
+	}
 
 	public Integer getId() {
 		return id;

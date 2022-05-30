@@ -1,13 +1,8 @@
 package com.application.myDocs.driver.dto;
 
-import com.application.myDocs.drivingLicense.DrivingLicense;
-import com.application.myDocs.identityCard.IdentityCard;
-
 public class DriverDTO {
 
 	private Integer id;
-	private IdentityCard identityCard;
-	private DrivingLicense drivingLicense;
 	private Integer totalPenaltyPoints;
 	private boolean unpaidFines;
 	private boolean expiredDocuments;
@@ -18,22 +13,6 @@ public class DriverDTO {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public IdentityCard getIdentityCard() {
-		return identityCard;
-	}
-
-	public void setIdentityCard(IdentityCard identityCard) {
-		this.identityCard = identityCard;
-	}
-
-	public DrivingLicense getDrivingLicense() {
-		return drivingLicense;
-	}
-
-	public void setDrivingLicense(DrivingLicense drivingLicense) {
-		this.drivingLicense = drivingLicense;
 	}
 
 	public Integer getTotalPenaltyPoints() {

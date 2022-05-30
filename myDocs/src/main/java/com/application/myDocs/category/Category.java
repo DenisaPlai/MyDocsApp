@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.application.myDocs.categoryEnum.CarCategory;
+import com.application.myDocs.CarCategory.CarCategory;
 import com.application.myDocs.drivingLicense.DrivingLicense;
 
 @Entity

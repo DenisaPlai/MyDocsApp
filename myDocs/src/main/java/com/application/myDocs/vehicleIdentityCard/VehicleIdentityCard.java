@@ -6,12 +6,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.application.myDocs.categoryEnum.CarCategory;
+import com.application.myDocs.CarCategory.CarCategory;
+import com.application.myDocs.car.Car;
 
 @Entity
 @Table(name = "vehicle_identity_card", schema = "administration")
@@ -193,6 +197,10 @@ public class VehicleIdentityCard {
 
 	@Column(name = "issue_date")
 	private LocalDate issueDate;
+
+	@OneToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "car_id", nullable = false)
+	private Car car;
 
 	public Integer getId() {
 		return id;
@@ -656,6 +664,14 @@ public class VehicleIdentityCard {
 
 	public void setIssueDate(LocalDate issueDate) {
 		this.issueDate = issueDate;
+	}
+
+	public Car getCar() {
+		return car;
+	}
+
+	public void setCar(Car car) {
+		this.car = car;
 	}
 
 }

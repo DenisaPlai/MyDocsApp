@@ -4,10 +4,15 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.application.myDocs.check.Check;
 
 @Entity
 @Table(name = "fine", schema = "administration")
@@ -32,6 +37,10 @@ public class Fine {
 
 	@Column(name = "observations")
 	private String observations;
+
+	@OneToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "check_id", nullable = false)
+	private Check check;
 
 	public Integer getId() {
 		return id;
@@ -80,4 +89,13 @@ public class Fine {
 	public void setObservations(String observations) {
 		this.observations = observations;
 	}
+
+	public Check getCheck() {
+		return check;
+	}
+
+	public void setCheck(Check check) {
+		this.check = check;
+	}
+
 }
