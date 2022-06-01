@@ -1,5 +1,8 @@
 package com.application.myDocs.driver.mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Component;
 
 import com.application.myDocs.driver.Driver;
@@ -24,5 +27,9 @@ public class DriverMapper {
 		driverDTO.setUnpaidFines(driver.isUnpaidFines());
 		driverDTO.setExpiredDocuments(driver.isExpiredDocuments());
 		return driverDTO;
+	}
+	
+	public List<DriverDTO> driverList2DriverListDTO(List<Driver> list) {
+		return list.stream().map(driver -> driver2DriverDTO(driver)).collect(Collectors.toList());
 	}
 }

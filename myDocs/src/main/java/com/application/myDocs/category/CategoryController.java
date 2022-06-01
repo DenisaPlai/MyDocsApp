@@ -15,7 +15,7 @@ import com.application.myDocs.category.dto.CategoryDTO;
 import com.application.myDocs.category.mapper.CategoryMapper;
 
 @RestController
-@RequestMapping("categories")
+@RequestMapping("/categories")
 public class CategoryController {
 
 	@Autowired

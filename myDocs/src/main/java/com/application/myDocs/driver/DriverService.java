@@ -1,5 +1,7 @@
 package com.application.myDocs.driver;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,10 @@ public class DriverService {
 
 	public void deleteDriverById(Integer id) {
 		driverRepository.deleteById(id);
+	}
+
+	public List<Driver> getAllDrivers() {
+		return driverRepository.findAll();
 	}
 
 }
