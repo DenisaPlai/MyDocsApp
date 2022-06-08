@@ -1,5 +1,7 @@
 package com.application.myDocs.roadworthinessCertificate;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,9 @@ public class RoadworthinessCertificateService {
 
 	public void deleteRoadworthinessCertificateById(Integer id) {
 		rcRepository.deleteById(id);
+	}
+
+	public List<RoadworthinessCertificate> getAllRoadworthinessCertificate() {
+		return rcRepository.findAll();
 	}
 }

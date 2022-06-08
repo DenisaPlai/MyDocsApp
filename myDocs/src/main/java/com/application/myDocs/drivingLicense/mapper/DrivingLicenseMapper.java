@@ -1,5 +1,8 @@
 package com.application.myDocs.drivingLicense.mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Component;
 
 import com.application.myDocs.drivingLicense.DrivingLicense;
@@ -32,5 +35,11 @@ public class DrivingLicenseMapper {
 		drivingLicense.setIssuedBy(drivingLicenseDTO.getIssuedBy());
 		drivingLicense.setSuspended(drivingLicenseDTO.isSuspended());
 		return drivingLicense;
+	}
+
+	public List<DrivingLicenseDTO> drivingLicenseList2DrivingLicenseListDTO(List<DrivingLicense> list) {
+		return list.stream().map(drivingLicense -> drivingLicense2DrivingLicenseDTO(drivingLicense))
+				.collect(Collectors.toList());
+
 	}
 }

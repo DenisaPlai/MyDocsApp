@@ -11,7 +11,7 @@ public class DrivingLicenseDTO {
 	private String placeOfBirth;
 	private String number;
 	private String issuedBy;
-	private boolean suspended;
+	private boolean suspended = false;
 
 	public Integer getId() {
 		return id;

@@ -1,5 +1,7 @@
 package com.application.myDocs.vehicleIdentityCard;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,10 @@ public class VehicleIdentityCardService {
 
 	public void deleteVicById(Integer id) {
 		vicRepository.deleteById(id);
+	}
+
+	public List<VehicleIdentityCard> getAllVic() {
+		return vicRepository.findAll();
 	}
 
 }

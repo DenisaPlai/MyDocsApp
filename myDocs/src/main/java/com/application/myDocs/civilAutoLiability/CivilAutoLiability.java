@@ -14,8 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.application.myDocs.CarCategory.CarCategory;
 import com.application.myDocs.car.Car;
+import com.application.myDocs.carCategory.CarCategory;
 import com.application.myDocs.territorialValidity.TerritorialValidity;
 
 @Entity
@@ -44,7 +44,7 @@ public class CivilAutoLiability {
 	private TerritorialValidity countryCode;
 
 	@Column(name = "number")
-	private Integer number;
+	private String number;
 
 	@Column(name = "series")
 	private String series;
@@ -72,8 +72,8 @@ public class CivilAutoLiability {
 	@Column(name = "price")
 	private Integer price;
 
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "car_id", nullable = false)
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "car_id")
 	private Car car;
 
 	public Car getCar() {
@@ -132,11 +132,11 @@ public class CivilAutoLiability {
 		this.countryCode = countryCode;
 	}
 
-	public Integer getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(Integer number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 

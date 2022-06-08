@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,7 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.application.myDocs.CarCategory.CarCategory;
+import com.application.myDocs.carCategory.CarCategory;
 import com.application.myDocs.drivingLicense.DrivingLicense;
 
 @Entity
@@ -35,7 +36,7 @@ public class Category {
 	@Column(name = "expiration_date")
 	private LocalDate expirationDate;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "driving_license_id")
 	private DrivingLicense drivingLicense;
 

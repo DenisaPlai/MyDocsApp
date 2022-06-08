@@ -38,8 +38,8 @@ public class Fine {
 	@Column(name = "observations")
 	private String observations;
 
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "check_id", nullable = false)
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "check_id")
 	private Check check;
 
 	public Integer getId() {

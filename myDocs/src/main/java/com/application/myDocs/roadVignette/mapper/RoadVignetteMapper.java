@@ -1,5 +1,8 @@
 package com.application.myDocs.roadVignette.mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Component;
 
 import com.application.myDocs.roadVignette.RoadVignette;
@@ -26,5 +29,10 @@ public class RoadVignetteMapper {
 		roadVignetteDTO.setRegistrationNo(roadVignette.getRegistrationNo());
 		roadVignetteDTO.setTerritorialValidity(roadVignette.getTerritorialValidity());
 		return roadVignetteDTO;
+	}
+
+	public List<RoadVignetteDTO> roadVignetteList2RoadVignetteListDTO(List<RoadVignette> list) {
+		return list.stream().map(roadVignette -> roadVignette2RoadVignetteDTO(roadVignette))
+				.collect(Collectors.toList());
 	}
 }

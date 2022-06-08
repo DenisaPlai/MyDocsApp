@@ -1,7 +1,11 @@
+
 package com.application.myDocs.police;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,5 +32,10 @@ public class PoliceController {
 	@DeleteMapping("/{id}")
 	public void deletePoliceById(@PathVariable Integer id) {
 		policeService.deletePoliceById(id);
+	}
+
+	@GetMapping("/list")
+	public List<PoliceDTO> getAllPolice() {
+		return policeMapper.policeList2PoliceListDTO(policeService.getAllPolice());
 	}
 }

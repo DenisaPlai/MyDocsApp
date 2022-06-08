@@ -2,7 +2,7 @@ package com.application.myDocs.category.dto;
 
 import java.time.LocalDate;
 
-import com.application.myDocs.CarCategory.CarCategory;
+import com.application.myDocs.carCategory.CarCategory;
 
 public class CategoryDTO {
 

@@ -41,16 +41,17 @@ public class Driver {
 	private Integer totalPenaltyPoints;
 
 	@Column(name = "unpaid_fines")
-	private boolean unpaidFines;
+	private boolean unpaidFines = false;
 
 	@Column(name = "expired_documents")
-	private boolean expiredDocuments;
+	private boolean expiredDocuments = false;
 
-	@OneToMany(mappedBy = "driver", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "driver", fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE,
+			CascadeType.REMOVE }, orphanRemoval = true)
 	private List<Check> ckecks = new ArrayList<>();
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "driver_car", schema = "administration", joinColumns = @JoinColumn(name = "driver_id", nullable = false), inverseJoinColumns = @JoinColumn(name = "car_id", nullable = false))
+	@JoinTable(name = "driver_car", schema = "administration", joinColumns = @JoinColumn(name = "driver_id"), inverseJoinColumns = @JoinColumn(name = "car_id"))
 	private List<Car> cars = new ArrayList<>();
 
 	public Integer getId() {

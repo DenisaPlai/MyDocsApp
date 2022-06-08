@@ -1,5 +1,7 @@
 package com.application.myDocs.fine;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,10 @@ public class FineService {
 	public void deleteFineById(Integer id) {
 		fineRepository.deleteById(id);
 
+	}
+
+	public List<Fine> getAllFine() {
+		return fineRepository.findAll();
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.application.myDocs.identityCard;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,10 @@ public class IdentityCardService {
 
 	public void deleteIdentityCardById(Integer id) {
 		identityCardRepository.deleteById(id);
+	}
+
+	public List<IdentityCard> getAllIdentityCard() {
+		return identityCardRepository.findAll();
 	}
 
 }

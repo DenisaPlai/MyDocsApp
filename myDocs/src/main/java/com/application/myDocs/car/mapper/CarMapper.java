@@ -1,5 +1,8 @@
 package com.application.myDocs.car.mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Component;
 
 import com.application.myDocs.car.Car;
@@ -26,5 +29,9 @@ public class CarMapper {
 		car.setVehicleIdentityCard(carDTO.getVehicleIdentityCard());
 		car.setVehicleRegistrationCertificate(carDTO.getVehicleRegistrationCertificate());
 		return car;
+	}
+
+	public List<CarDTO> carList2CarListDTO(List<Car> list) {
+		return list.stream().map(car -> car2CarDTO(car)).collect(Collectors.toList());
 	}
 }

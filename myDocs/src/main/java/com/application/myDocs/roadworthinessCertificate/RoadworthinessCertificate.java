@@ -31,7 +31,8 @@ public class RoadworthinessCertificate {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@OneToMany(mappedBy = "roadworthinessCertificate", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "roadworthinessCertificate", fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST,
+			CascadeType.MERGE, CascadeType.REMOVE }, orphanRemoval = true)
 	private List<Defects> defects = new ArrayList<>();
 
 	@Column(name = "vin_number")
@@ -68,8 +69,8 @@ public class RoadworthinessCertificate {
 	@Column(name = "entry_in_the_national_db")
 	private String entryInTheNationalDb;
 
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "car_id", nullable = false)
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "car_id")
 	private Car car;
 
 	public Car getCar() {

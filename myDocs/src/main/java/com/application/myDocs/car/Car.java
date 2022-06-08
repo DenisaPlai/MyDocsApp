@@ -31,22 +31,23 @@ public class Car {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "car")
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "car")
 	private VehicleRegistrationCertificate vehicleRegistrationCertificate;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "car")
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "car")
 	private RoadworthinessCertificate roadworthinessCertificate;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "car")
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "car")
 	private CivilAutoLiability civilAutoLiability;
 
-	@OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "car", fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE,
+			CascadeType.REMOVE }, orphanRemoval = true)
 	private List<RoadVignette> roadVignettes = new ArrayList<>();
-	
-	@ManyToMany(mappedBy="cars")
+
+	@ManyToMany(mappedBy = "cars")
 	private List<Driver> drivers = new ArrayList<>();
 
-    @OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "car")
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "car")
 	private VehicleIdentityCard vehicleIdentityCard;
 
 	public Integer getId() {
@@ -88,7 +89,7 @@ public class Car {
 	public void setVehicleIdentityCard(VehicleIdentityCard vehicleIdentityCard) {
 		this.vehicleIdentityCard = vehicleIdentityCard;
 	}
-	
+
 	public List<RoadVignette> getRoadVignettes() {
 		return roadVignettes;
 	}

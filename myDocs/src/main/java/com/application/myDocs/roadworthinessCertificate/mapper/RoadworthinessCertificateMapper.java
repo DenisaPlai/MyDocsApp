@@ -1,5 +1,8 @@
 package com.application.myDocs.roadworthinessCertificate.mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Component;
 
 import com.application.myDocs.roadworthinessCertificate.RoadworthinessCertificate;
@@ -42,5 +45,11 @@ public class RoadworthinessCertificateMapper {
 		rc.setInspectionOrganisationName(rcDTO.getInspectionOrganisationName());
 		rc.setEntryInTheNationalDb(rcDTO.getEntryInTheNationalDb());
 		return rc;
+	}
+
+	public List<RoadworthinessCertificateDTO> roadworthinessCertificateList2RoadworthinessCertificateListDTO(
+			List<RoadworthinessCertificate> list) {
+		return list.stream().map(rc -> roadworthinessCertificate2RoadworthinessCertificateDTO(rc))
+				.collect(Collectors.toList());
 	}
 }

@@ -1,5 +1,7 @@
 package com.application.myDocs.roadVignette;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,10 @@ public class RoadVignetteService {
 
 	public void deleteRoadVignetteById(Integer id) {
 		roadVignetteRepository.deleteById(id);
+	}
+
+	public List<RoadVignette> getAllRoadVignette() {
+		return roadVignetteRepository.findAll();
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.application.myDocs.vehicleRegistrationCertificate;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,10 @@ public class VehicleRegistrationCertificateService {
 
 	public void deleteVrcById(Integer id) {
 		vrcRepository.deleteById(id);
+	}
+
+	public List<VehicleRegistrationCertificate> getAllVrc() {
+		return vrcRepository.findAll();
 	}
 
 }

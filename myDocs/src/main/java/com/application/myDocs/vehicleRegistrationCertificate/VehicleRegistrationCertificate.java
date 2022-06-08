@@ -14,8 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.application.myDocs.CarCategory.CarCategory;
 import com.application.myDocs.car.Car;
+import com.application.myDocs.carCategory.CarCategory;
 
 @Entity
 @Table(name = "vehicle_registration_certificate", schema = "administration")
@@ -30,7 +30,7 @@ public class VehicleRegistrationCertificate {
 	private String registrationNo;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "category_id")
+	@Column(name = "category")
 	private CarCategory categoryId;
 
 	@Column(name = "mark")
@@ -67,7 +67,7 @@ public class VehicleRegistrationCertificate {
 	private Integer standingPlacesNo;
 
 	@Column(name = "suspended")
-	private boolean suspended;
+	private boolean suspended = false;
 
 	@Column(name = "max_power")
 	private Integer maxPower;
@@ -83,9 +83,9 @@ public class VehicleRegistrationCertificate {
 
 	@Column(name = "expiration_date")
 	private LocalDate expirationDate;
-
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "car_id", nullable = false)
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "car_id")
 	private Car car;
 
 	public Integer getId() {
@@ -200,16 +200,16 @@ public class VehicleRegistrationCertificate {
 		this.standingPlacesNo = standingPlacesNo;
 	}
 
+	public Integer getMaxPower() {
+		return maxPower;
+	}
+
 	public boolean isSuspended() {
 		return suspended;
 	}
 
 	public void setSuspended(boolean suspended) {
 		this.suspended = suspended;
-	}
-
-	public Integer getMaxPower() {
-		return maxPower;
 	}
 
 	public void setMaxPower(Integer maxPower) {

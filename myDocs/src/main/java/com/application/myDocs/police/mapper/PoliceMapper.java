@@ -1,5 +1,8 @@
 package com.application.myDocs.police.mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Component;
 
 import com.application.myDocs.police.Police;
@@ -28,5 +31,9 @@ public class PoliceMapper {
 		police.setGrade(policeDTO.getGrade());
 		police.setCode(policeDTO.getCode());
 		return police;
+	}
+
+	public List<PoliceDTO> policeList2PoliceListDTO(List<Police> list) {
+		return list.stream().map(police -> police2PoliceDTO(police)).collect(Collectors.toList());
 	}
 }

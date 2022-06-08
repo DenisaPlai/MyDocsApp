@@ -14,8 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.application.myDocs.CarCategory.CarCategory;
 import com.application.myDocs.car.Car;
+import com.application.myDocs.carCategory.CarCategory;
 
 @Entity
 @Table(name = "vehicle_identity_card", schema = "administration")
@@ -198,8 +198,8 @@ public class VehicleIdentityCard {
 	@Column(name = "issue_date")
 	private LocalDate issueDate;
 
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "car_id", nullable = false)
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "car_id")
 	private Car car;
 
 	public Integer getId() {

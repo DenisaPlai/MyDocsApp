@@ -1,5 +1,8 @@
 package com.application.myDocs.check.mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Component;
 
 import com.application.myDocs.check.Check;
@@ -26,5 +29,9 @@ public class CheckMapper {
 		check.setPlace(checkDTO.getPlace());
 		check.setObservation(checkDTO.getObservation());
 		return check;
+	}
+
+	public List<CheckDTO> checkList2CheckListDTO(List<Check> list) {
+		return list.stream().map(check -> check2checkDTO(check)).collect(Collectors.toList());
 	}
 }

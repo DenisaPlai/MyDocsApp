@@ -28,8 +28,8 @@ public class Check {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@ManyToOne()
-	@JoinColumn(name = "user_id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "driver_id")
 	private Driver driver;
 
 	@ManyToOne()

@@ -1,5 +1,7 @@
 package com.application.myDocs.police;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,10 @@ public class PoliceService {
 
 	public void deletePoliceById(Integer id) {
 		policeRepository.deleteById(id);
+	}
+
+	public List<Police> getAllPolice() {
+		return policeRepository.findAll();
 	}
 
 }

@@ -47,13 +47,14 @@ public class DrivingLicense {
 	private String issuedBy;
 
 	@Column(name = "suspended")
-	private boolean suspended;
+	private boolean suspended = false;
 
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "driver_id", nullable = false)
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "driver_id")
 	private Driver driver;
 
-	@OneToMany(mappedBy = "drivingLicense", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "drivingLicense", fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE,
+			CascadeType.REMOVE }, orphanRemoval = true)
 	private List<Category> categories = new ArrayList<>();
 
 	public Integer getId() {

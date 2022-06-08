@@ -1,5 +1,7 @@
 package com.application.myDocs.drivingLicense;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,10 @@ public class DrivingLicenseService {
 
 	public void deleteDrivingLicenseById(Integer id) {
 		drivingLicenseRepository.deleteById(id);
+	}
+
+	public List<DrivingLicense> getAllDrivingLicense() {
+		return drivingLicenseRepository.findAll();
 	}
 
 }

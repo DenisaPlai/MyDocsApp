@@ -1,4 +1,4 @@
-package com.application.myDocs.CarCategory;
+package com.application.myDocs.carCategory;
 
 public enum CarCategory {
 

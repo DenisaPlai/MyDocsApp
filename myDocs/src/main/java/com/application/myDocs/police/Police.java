@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +39,8 @@ public class Police {
 	@Column(name = "code")
 	private String code;
 
-	@OneToMany(mappedBy = "police", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "police", fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE,
+			CascadeType.REMOVE }, orphanRemoval = true)
 	private List<Check> ckecks = new ArrayList<>();
 
 	public Integer getId() {

@@ -4,8 +4,8 @@ public class DriverDTO {
 
 	private Integer id;
 	private Integer totalPenaltyPoints;
-	private boolean unpaidFines;
-	private boolean expiredDocuments;
+	private boolean unpaidFines = false;
+	private boolean expiredDocuments = false;
 
 	public Integer getId() {
 		return id;

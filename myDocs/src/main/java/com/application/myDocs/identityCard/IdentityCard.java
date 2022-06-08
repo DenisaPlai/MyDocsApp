@@ -63,8 +63,8 @@ public class IdentityCard {
 	@Column(name = "sex")
 	private Gender sex;
 
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "driver_id", nullable = false)
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "driver_id")
 	private Driver driver;
 
 	public Integer getId() {
