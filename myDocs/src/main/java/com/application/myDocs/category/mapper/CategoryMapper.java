@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 import com.application.myDocs.category.Category;
+import com.application.myDocs.category.dto.CategoryCreateDTO;
 import com.application.myDocs.category.dto.CategoryDTO;
 
 @Component
@@ -31,5 +32,14 @@ public class CategoryMapper {
 
 	public List<CategoryDTO> categoryList2CategoryListDTO(List<Category> list) {
 		return list.stream().map(category -> category2CategoryDTO(category)).collect(Collectors.toList());
+	}
+	
+	public Category categoryCreateDTO2Category(CategoryCreateDTO categoryCreateDTO) {
+		Category category = new Category();
+		category.setId(categoryCreateDTO.getId());
+		category.setCode(categoryCreateDTO.getCode());
+		category.setIssuedDate(categoryCreateDTO.getIssuedDate());
+		category.setExpirationDate(categoryCreateDTO.getExpirationDate());
+		return category;
 	}
 }

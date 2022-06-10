@@ -93,7 +93,7 @@ public class RoadVignette {
 
 	public void addCar(Car car2) {
 		this.car = car2;
-		car2.setRoadVignettes(this);
+		car2.getRoadVignettes().add(this);
 	}
 
 }

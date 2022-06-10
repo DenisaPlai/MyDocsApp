@@ -2,6 +2,7 @@ package com.application.myDocs.driver;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,14 @@ public class DriverService {
 			return driverOpt.get();
 		}
 		return null;
+	}
+
+	public Driver getDriverByCnp(String cnp) {
+		return driverRepository.findByCnp(cnp);
+	}
+
+	public Set<Driver> getDrivers(Set<Integer> driverIds) {
+		return driverRepository.findByIdIn(driverIds);
 	}
 
 }

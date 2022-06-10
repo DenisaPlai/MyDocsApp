@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.application.myDocs.car.Car;
 import com.application.myDocs.car.CarService;
-import com.application.myDocs.civilAutoLiability.CivilAutoLiability;
 
 @Service
 public class RoadVignetteService {
@@ -32,6 +31,6 @@ public class RoadVignetteService {
 	public RoadVignette createRoadVignette(RoadVignette roadVignette, Integer carId) {
 		Car car = carService.getCar(carId);
 		roadVignette.addCar(car);
-		return roadVignetteRepository.save(cal);
+		return roadVignetteRepository.save(roadVignette);
 	}
 }

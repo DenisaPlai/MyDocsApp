@@ -1,6 +1,7 @@
 package com.application.myDocs.roadworthinessCertificate;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,4 +35,13 @@ public class RoadworthinessCertificateService {
 		return rcRepository.save(rc);
 
 	}
+
+	public RoadworthinessCertificate getRoadworthinessCertificate(Integer rcId) {
+		Optional<RoadworthinessCertificate> rcOpt = rcRepository.findById(rcId);
+		if (rcOpt.isPresent()) {
+			return rcOpt.get();
+		}
+		return null;
+	}
+
 }

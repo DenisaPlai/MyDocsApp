@@ -1,7 +1,6 @@
 package com.application.myDocs.roadVignette.dto;
 
 import java.time.LocalDate;
-import java.util.Set;
 
 import com.application.myDocs.territorialValidity.TerritorialValidity;
 
@@ -12,9 +11,15 @@ public class RoadVignetteCreateDTO {
 	private LocalDate issuedDate;
 	private LocalDate expirationDate;
 	private String registrationNo;
-	private Set<Integer> carIds;
+	private Integer carId;
 
+	public Integer getCarId() {
+		return carId;
+	}
 
+	public void setCarId(Integer carId) {
+		this.carId = carId;
+	}
 
 	public Integer getId() {
 		return id;

@@ -80,4 +80,9 @@ public class Category {
 		this.drivingLicense = drivingLicense;
 	}
 
+	public void addDrivingLicense(DrivingLicense drivingLicense2) {
+		this.drivingLicense = drivingLicense2;
+		drivingLicense2.getCategories().add(this);
+	}
+
 }

@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 import com.application.myDocs.defects.Defects;
+import com.application.myDocs.defects.dto.DefectsCreateDTO;
 import com.application.myDocs.defects.dto.DefectsDTO;
 
 @Component
@@ -31,5 +32,14 @@ public class DefectsMapper {
 
 	public List<DefectsDTO> defectsList2DefectsListDTO(List<Defects> list) {
 		return list.stream().map(defects -> defects2DefectsDTO(defects)).collect(Collectors.toList());
+	}
+
+	public Defects defectsCreateDTO2Defects(DefectsCreateDTO defectsCreateDTO) {
+		Defects defects = new Defects();
+		defects.setId(defectsCreateDTO.getId());
+		defects.setCategory(defectsCreateDTO.getCategory());
+		defects.setIdentifiedDefect(defectsCreateDTO.getIdentifiedDefect());
+		defects.setCode(defectsCreateDTO.getCode());
+		return defects;
 	}
 }

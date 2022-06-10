@@ -17,6 +17,7 @@ public class DriverMapper {
 		driver.setTotalPenaltyPoints(driverDTO.getTotalPenaltyPoints());
 		driver.setUnpaidFines(driverDTO.isUnpaidFines());
 		driver.setExpiredDocuments(driverDTO.isExpiredDocuments());
+		driver.setCnp(driverDTO.getCnp());
 		return driver;
 	}
 
@@ -26,9 +27,10 @@ public class DriverMapper {
 		driverDTO.setTotalPenaltyPoints(driver.getTotalPenaltyPoints());
 		driverDTO.setUnpaidFines(driver.isUnpaidFines());
 		driverDTO.setExpiredDocuments(driver.isExpiredDocuments());
+		driverDTO.setCnp(driver.getCnp());
 		return driverDTO;
 	}
-	
+
 	public List<DriverDTO> driverList2DriverListDTO(List<Driver> list) {
 		return list.stream().map(driver -> driver2DriverDTO(driver)).collect(Collectors.toList());
 	}

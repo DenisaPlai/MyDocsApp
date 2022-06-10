@@ -2,6 +2,7 @@ package com.application.myDocs.car;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -31,6 +34,9 @@ public class Car {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@Column(name = "registration_no")
+	private String registrationNo;
+
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "car")
 	private VehicleRegistrationCertificate vehicleRegistrationCertificate;
 
@@ -44,8 +50,9 @@ public class Car {
 			CascadeType.REMOVE }, orphanRemoval = true)
 	private List<RoadVignette> roadVignettes = new ArrayList<>();
 
-	@ManyToMany(mappedBy = "cars")
-	private List<Driver> drivers = new ArrayList<>();
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "driver_car", schema = "administration", joinColumns = @JoinColumn(name = "driver_id"), inverseJoinColumns = @JoinColumn(name = "car_id"))
+	private Set<Driver> drivers;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "car")
 	private VehicleIdentityCard vehicleIdentityCard;
@@ -56,6 +63,14 @@ public class Car {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getRegistrationNo() {
+		return registrationNo;
+	}
+
+	public void setRegistrationNo(String registrationNo) {
+		this.registrationNo = registrationNo;
 	}
 
 	public VehicleRegistrationCertificate getVehicleRegistrationCertificate() {
@@ -98,23 +113,17 @@ public class Car {
 		this.roadVignettes = roadVignettes;
 	}
 
-	public List<Driver> getDrivers() {
+	public Set<Driver> getDrivers() {
 		return drivers;
 	}
 
-	public void setDrivers(List<Driver> drivers) {
+	public void setDrivers(Set<Driver> drivers) {
 		this.drivers = drivers;
 	}
 
-	// add a road vignette to a car
-	public void addRoadVignette(RoadVignette roadVignette) {
-		this.roadVignettes.add(roadVignette);
-		roadVignette.setCar(this);
+	public void addDriver(Driver driver) {
+		this.drivers.add(driver);
+		driver.getCars().add(this);
 	}
 
-	// delete a road vignette from a car
-	public void removeRoadVignette(RoadVignette roadVignette) {
-		this.roadVignettes.remove(roadVignette);
-		roadVignette.setCar(null);
-	}
 }

@@ -10,8 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -46,13 +44,23 @@ public class Driver {
 	@Column(name = "expired_documents")
 	private boolean expiredDocuments = false;
 
+	@Column(name = "cnp")
+	private String cnp;
+
 	@OneToMany(mappedBy = "driver", fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE,
 			CascadeType.REMOVE }, orphanRemoval = true)
 	private List<Check> ckecks = new ArrayList<>();
 
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "driver_car", schema = "administration", joinColumns = @JoinColumn(name = "driver_id"), inverseJoinColumns = @JoinColumn(name = "car_id"))
+	@ManyToMany(mappedBy = "drivers")
 	private List<Car> cars = new ArrayList<>();
+
+	public String getCnp() {
+		return cnp;
+	}
+
+	public void setCnp(String cnp) {
+		this.cnp = cnp;
+	}
 
 	public Integer getId() {
 		return id;

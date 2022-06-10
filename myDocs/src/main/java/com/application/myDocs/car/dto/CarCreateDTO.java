@@ -1,46 +1,35 @@
 package com.application.myDocs.car.dto;
 
-import com.application.myDocs.civilAutoLiability.CivilAutoLiability;
-import com.application.myDocs.roadworthinessCertificate.RoadworthinessCertificate;
-import com.application.myDocs.vehicleIdentityCard.VehicleIdentityCard;
-import com.application.myDocs.vehicleRegistrationCertificate.VehicleRegistrationCertificate;
+import java.util.Set;
 
 public class CarCreateDTO {
-	private VehicleRegistrationCertificate vehicleRegistrationCertificate;
-	private RoadworthinessCertificate roadworthinessCertificate;
-	private CivilAutoLiability civilAutoLiability;
-	private VehicleIdentityCard vehicleIdentityCard;
 
-	public VehicleRegistrationCertificate getVehicleRegistrationCertificate() {
-		return vehicleRegistrationCertificate;
+	private Integer id;
+	private String registrationNo;
+	private Set<Integer> driverIds;
+
+	public Set<Integer> getDriverIds() {
+		return driverIds;
 	}
 
-	public void setVehicleRegistrationCertificate(VehicleRegistrationCertificate vehicleRegistrationCertificate) {
-		this.vehicleRegistrationCertificate = vehicleRegistrationCertificate;
+	public void setDriverIds(Set<Integer> driverIds) {
+		this.driverIds = driverIds;
 	}
 
-	public RoadworthinessCertificate getRoadworthinessCertificate() {
-		return roadworthinessCertificate;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setRoadworthinessCertificate(RoadworthinessCertificate roadworthinessCertificate) {
-		this.roadworthinessCertificate = roadworthinessCertificate;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public CivilAutoLiability getCivilAutoLiability() {
-		return civilAutoLiability;
+	public String getRegistrationNo() {
+		return registrationNo;
 	}
 
-	public void setCivilAutoLiability(CivilAutoLiability civilAutoLiability) {
-		this.civilAutoLiability = civilAutoLiability;
-	}
-
-	public VehicleIdentityCard getVehicleIdentityCard() {
-		return vehicleIdentityCard;
-	}
-
-	public void setVehicleIdentityCard(VehicleIdentityCard vehicleIdentityCard) {
-		this.vehicleIdentityCard = vehicleIdentityCard;
+	public void setRegistrationNo(String registrationNo) {
+		this.registrationNo = registrationNo;
 	}
 
 }

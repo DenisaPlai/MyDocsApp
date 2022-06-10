@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.application.myDocs.roadVignette.dto.RoadVignetteCreateDTO;
 import com.application.myDocs.roadVignette.dto.RoadVignetteDTO;
 import com.application.myDocs.roadVignette.mapper.RoadVignetteMapper;
 
@@ -38,5 +39,14 @@ public class RoadVignetteController {
 	@GetMapping("/list")
 	public List<RoadVignetteDTO> getAllRoadVignette() {
 		return roadVignetteMapper.roadVignetteList2RoadVignetteListDTO(roadVignetteService.getAllRoadVignette());
+	}
+
+	@PostMapping("/with-car")
+	public RoadVignetteDTO createRoadVignetteWithRoadVignette(
+			@RequestBody RoadVignetteCreateDTO roadVignetteCreateDTO) {
+		RoadVignette createRoadVignette = roadVignetteService.createRoadVignette(
+				roadVignetteMapper.roadVignetteCreateDTO2RoadVignette(roadVignetteCreateDTO),
+				roadVignetteCreateDTO.getCarId());
+		return roadVignetteMapper.roadVignette2RoadVignetteDTO(createRoadVignette);
 	}
 }

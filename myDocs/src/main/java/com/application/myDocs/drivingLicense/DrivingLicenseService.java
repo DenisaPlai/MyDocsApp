@@ -1,6 +1,7 @@
 package com.application.myDocs.drivingLicense;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,14 @@ public class DrivingLicenseService {
 		Driver driver = driverService.getDriverById(driverId);
 		drivingLicense.addDriver(driver);
 		return drivingLicenseRepository.save(drivingLicense);
+	}
+
+	public DrivingLicense getDrivingLicense(Integer id) {
+		Optional<DrivingLicense> dlOpt = drivingLicenseRepository.findById(id);
+		if (dlOpt.isPresent()) {
+			return dlOpt.get();
+		}
+		return null;
 	}
 
 }

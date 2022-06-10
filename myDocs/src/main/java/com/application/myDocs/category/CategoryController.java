@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.application.myDocs.category.dto.CategoryCreateDTO;
 import com.application.myDocs.category.dto.CategoryDTO;
 import com.application.myDocs.category.mapper.CategoryMapper;
 
@@ -37,5 +38,12 @@ public class CategoryController {
 	@GetMapping("/list")
 	public List<CategoryDTO> getAllCategory() {
 		return categoryMapper.categoryList2CategoryListDTO(categoryService.getAllCategory());
+	}
+
+	@PostMapping("/with-drivingLicense")
+	public CategoryDTO createCategoryWithDrivingLicense(@RequestBody CategoryCreateDTO categoryCreateDTO) {
+		Category createCategory = categoryService.createCategory(
+				categoryMapper.categoryCreateDTO2Category(categoryCreateDTO), categoryCreateDTO.getDrivingLicenseID());
+		return categoryMapper.category2CategoryDTO(createCategory);
 	}
 }

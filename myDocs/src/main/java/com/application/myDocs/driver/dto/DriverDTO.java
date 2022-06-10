@@ -6,6 +6,15 @@ public class DriverDTO {
 	private Integer totalPenaltyPoints;
 	private boolean unpaidFines = false;
 	private boolean expiredDocuments = false;
+	private String cnp;
+
+	public String getCnp() {
+		return cnp;
+	}
+
+	public void setCnp(String cnp) {
+		this.cnp = cnp;
+	}
 
 	public Integer getId() {
 		return id;

@@ -78,4 +78,9 @@ public class Defects {
 		this.code = code;
 	}
 
+	public void addRc(RoadworthinessCertificate rc) {
+		this.roadworthinessCertificate = rc;
+		rc.getDefects().add(this);
+	}
+
 }

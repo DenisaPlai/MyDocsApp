@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.application.myDocs.defects.dto.DefectsCreateDTO;
 import com.application.myDocs.defects.dto.DefectsDTO;
 import com.application.myDocs.defects.mapper.DefectsMapper;
 
@@ -37,5 +38,14 @@ public class DefectsController {
 	@GetMapping("/list")
 	public List<DefectsDTO> getAllDefects() {
 		return defectsMapper.defectsList2DefectsListDTO(defectsService.getAllDefects());
+	}
+	
+	@PostMapping("/with-roadworthinessCertificate")
+	public DefectsDTO createDefectsWithRoadworthinessCertificate(
+			@RequestBody DefectsCreateDTO defectsCreateDTO) {
+		Defects createDefects = defectsService.createDefects(
+				defectsMapper.defectsCreateDTO2Defects(defectsCreateDTO),
+				defectsCreateDTO.getRcId());
+		return defectsMapper.defects2DefectsDTO(createDefects);
 	}
 }

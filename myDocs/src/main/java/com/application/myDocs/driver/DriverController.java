@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.application.myDocs.driver.dto.DriverDTO;
@@ -36,5 +37,10 @@ public class DriverController {
 	@GetMapping("/list")
 	public List<DriverDTO> getAllDrivers() {
 		return driverMapper.driverList2DriverListDTO(driverService.getAllDrivers());
+	}
+
+	@GetMapping("/byCnp")
+	public DriverDTO getDriverByCnp(@RequestParam String cnp) {
+		return driverMapper.driver2DriverDTO(driverService.getDriverByCnp(cnp));
 	}
 }
