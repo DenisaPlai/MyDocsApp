@@ -194,4 +194,9 @@ public class RoadworthinessCertificate {
 	public void setInspectionOrganisationName(String inspectionOrganisationName) {
 		this.inspectionOrganisationName = inspectionOrganisationName;
 	}
+
+	public void addCar(Car car2) {
+		this.car = car2;
+		car2.setRoadworthinessCertificate(this);
+	}
 }

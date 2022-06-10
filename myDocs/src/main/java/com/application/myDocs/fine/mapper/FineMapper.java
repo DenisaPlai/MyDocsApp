@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 import com.application.myDocs.fine.Fine;
+import com.application.myDocs.fine.dto.FineCreateDTO;
 import com.application.myDocs.fine.dto.FineDTO;
 
 @Component
@@ -35,5 +36,15 @@ public class FineMapper {
 
 	public List<FineDTO> fineList2FineListDTO(List<Fine> list) {
 		return list.stream().map(fine -> fine2FineDTO(fine)).collect(Collectors.toList());
+	}
+
+	public Fine fineCreateDTO2Fine(FineCreateDTO fineCreateDTO) {
+		Fine fine = new Fine();
+		fine.setAmount(fineCreateDTO.getAmount());	
+		fine.setObservations(fineCreateDTO.getObservations());
+		fine.setPaymentDate(fineCreateDTO.getPaymentDate());
+		fine.setPenaltyPoints(fineCreateDTO.getPenaltyPoints());
+		fine.setReason(fineCreateDTO.getReason());
+		return fine;
 	}
 }

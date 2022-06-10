@@ -98,4 +98,9 @@ public class Fine {
 		this.check = check;
 	}
 
+	public void addCheck(Check check2) {
+		this.check = check2;
+		check2.setFine(this);
+	}
+
 }

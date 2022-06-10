@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.application.myDocs.vehicleRegistrationCertificate.dto.VehicleRegistrationCertificateCreateDTO;
 import com.application.myDocs.vehicleRegistrationCertificate.dto.VehicleRegistrationCertificateDTO;
 import com.application.myDocs.vehicleRegistrationCertificate.mapper.VehicleRegistrationCertificateMapper;
 
@@ -39,5 +40,14 @@ public class VehicleRegistrationCertificateController {
 	public List<VehicleRegistrationCertificateDTO> getAllVrc() {
 		return vrcMapper
 				.vehicleRegistrationCertificateList2VehicleRegistrationCertificateListDTO(vrcService.getAllVrc());
+	}
+
+	@PostMapping("/with-car")
+	public VehicleRegistrationCertificateDTO createVrcWithCar(
+			@RequestBody VehicleRegistrationCertificateCreateDTO vrcCreateDTO) {
+		VehicleRegistrationCertificate createVrc = vrcService.createVrc(
+				vrcMapper.vehicleRegistrationCertificateCreateDTO2VehicleRegistrationCertificate(vrcCreateDTO),
+				vrcCreateDTO.getCarId());
+		return vrcMapper.vehicleRegistrationCertificate2VehicleRegistrationCertificateDTO(createVrc);
 	}
 }

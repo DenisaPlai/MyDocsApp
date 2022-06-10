@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.application.myDocs.civilAutoLiability.dto.CivilAutoLiabilityCreateDTO;
 import com.application.myDocs.civilAutoLiability.dto.CivilAutoLiabilityDTO;
 import com.application.myDocs.civilAutoLiability.mapper.CivilAutoLiabilityMapper;
 
@@ -37,5 +38,12 @@ public class CivilAutoLiabilityController {
 	@GetMapping("/list")
 	public List<CivilAutoLiabilityDTO> getAllCal() {
 		return calMapper.civilAutoLiabilityList2CivilAutoLiabilityListDTO(calService.getAllCal());
+	}
+
+	@PostMapping("/with-car")
+	public CivilAutoLiabilityDTO createCalWithCar(@RequestBody CivilAutoLiabilityCreateDTO calCreateDTO) {
+		CivilAutoLiability createCal = calService.createCal(
+				calMapper.civilAutoLiabilityCreateDTO2CivilAutoLiability(calCreateDTO), calCreateDTO.getCarId());
+		return calMapper.civilAutoLiability2CivilAutoLiabilityDTO(createCal);
 	}
 }

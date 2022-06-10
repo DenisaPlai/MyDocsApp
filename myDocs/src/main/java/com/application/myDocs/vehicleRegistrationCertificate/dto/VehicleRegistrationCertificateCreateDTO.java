@@ -1,92 +1,40 @@
-package com.application.myDocs.vehicleRegistrationCertificate;
+package com.application.myDocs.vehicleRegistrationCertificate.dto;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-import com.application.myDocs.car.Car;
 import com.application.myDocs.carCategory.CarCategory;
 
-@Entity
-@Table(name = "vehicle_registration_certificate", schema = "administration")
-public class VehicleRegistrationCertificate {
+public class VehicleRegistrationCertificateCreateDTO {
 
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
-	@Column(name = "registration_no")
 	private String registrationNo;
-
-	@Enumerated(EnumType.STRING)
-	@Column(name = "category")
 	private CarCategory categoryId;
-
-	@Column(name = "mark")
 	private String mark;
-
-	@Column(name = "model")
 	private String model;
-
-	@Column(name = "type")
 	private String type;
-
-	@Column(name = "vin")
 	private String vin;
-
-	@Column(name = "type_approval_no")
 	private String typeApprovalNo;
-
-	@Column(name = "max_permissible_mass")
 	private Integer maxPermissibleMass;
-
-	@Column(name = "cylinder_capacity")
 	private Integer cylinderCapacity;
-
-	@Column(name = "fuel_type")
 	private String fuelType;
-
-	@Column(name = "color")
 	private String color;
-
-	@Column(name = "seats_no")
 	private Integer seatsNo;
-
-	@Column(name = "standing_places_no")
 	private Integer standingPlacesNo;
-
-	@Column(name = "suspended")
 	private boolean suspended = false;
-
-	@Column(name = "max_power")
 	private Integer maxPower;
-
-	@Column(name = "mass_in_service")
 	private Integer massInService;
-
-	@Column(name = "first_registration_date")
 	private LocalDate firstRegistrationDate;
-
-	@Column(name = "date_of_issue")
 	private LocalDate dateOfIssue;
-
-	@Column(name = "expiration_date")
 	private LocalDate expirationDate;
+	private Integer carId;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "car_id")
-	private Car car;
+	public Integer getCarId() {
+		return carId;
+	}
+
+	public void setCarId(Integer carId) {
+		this.carId = carId;
+	}
 
 	public Integer getId() {
 		return id;
@@ -200,16 +148,16 @@ public class VehicleRegistrationCertificate {
 		this.standingPlacesNo = standingPlacesNo;
 	}
 
-	public Integer getMaxPower() {
-		return maxPower;
-	}
-
 	public boolean isSuspended() {
 		return suspended;
 	}
 
 	public void setSuspended(boolean suspended) {
 		this.suspended = suspended;
+	}
+
+	public Integer getMaxPower() {
+		return maxPower;
 	}
 
 	public void setMaxPower(Integer maxPower) {
@@ -246,19 +194,6 @@ public class VehicleRegistrationCertificate {
 
 	public void setExpirationDate(LocalDate expirationDate) {
 		this.expirationDate = expirationDate;
-	}
-
-	public Car getCar() {
-		return car;
-	}
-
-	public void setCar(Car car) {
-		this.car = car;
-	}
-
-	public void addCar(Car car2) {
-		this.car = car2;
-		car2.setVehicleRegistrationCertificate(this);
 	}
 
 }

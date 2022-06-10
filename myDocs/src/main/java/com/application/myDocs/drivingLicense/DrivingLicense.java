@@ -146,4 +146,10 @@ public class DrivingLicense {
 		this.categories.remove(category);
 		category.setDrivingLicense(null);
 	}
+
+	public void addDriver(Driver driver2) {
+		this.driver = driver2;
+		driver2.setDrivingLicense(this);
+	}
+
 }

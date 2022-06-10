@@ -1,206 +1,77 @@
-package com.application.myDocs.vehicleIdentityCard;
+package com.application.myDocs.vehicleIdentityCard.dto;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-import com.application.myDocs.car.Car;
 import com.application.myDocs.carCategory.CarCategory;
 
-@Entity
-@Table(name = "vehicle_identity_card", schema = "administration")
-public class VehicleIdentityCard {
+public class VehicleIdentityCardCreateDTO {
 
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
-	@Column(name = "registration_no")
 	private String registrationNo;
-
-	@Column(name = "registration_authority")
 	private String registrationAuthority;
-
-	@Column(name = "registration_date")
 	private LocalDate registrationDate;
-
-	@Column(name = "mark")
 	private String mark;
-
-	@Column(name = "type")
 	private String type;
-
-	@Column(name = "variant")
 	private String variant;
-
-	@Column(name = "version")
 	private String version;
-
-	@Column(name = "trade_name")
 	private String tradeName;
-
-	@Column(name = "identification_number")
 	private String identificationNumber;
-
-	@Column(name = "manufacture_year")
 	private Integer manufactureYear;
-
-	@Enumerated(EnumType.STRING)
-	@Column(name = "category")
 	private CarCategory category;
-
-	@Column(name = "use_category")
 	private String useCategory;
-
-	@Column(name = "class")
 	private String classes;
-
-	@Column(name = "carrossery")
 	private String carrossery;
-
-	@Column(name = "type_approval_number")
 	private String typeApprovalNumber;
-
-	@Column(name = "national_register_number")
 	private String nationalRegisterNumber;
-
-	@Column(name = "axles_number")
 	private Integer axlesNumber;
-
-	@Column(name = "max_permissible_mass")
 	private Integer maxPermissibleMass;
-
-	@Column(name = "max_permissible_mass_for_axis_1")
 	private Integer maxPermissibleMassForAxis1;
-
-	@Column(name = "max_permissible_mass_for_axis_2")
 	private Integer maxPermissibleMassForAxis2;
-
-	@Column(name = "max_permissible_mass_for_axis_3")
 	private Integer maxPermissibleMassForAxis3;
-
-	@Column(name = "max_permissible_mass_for_axis_4")
 	private Integer maxPermissibleMassForAxis4;
-
-	@Column(name = "max_permissible_mass_for_axis_5")
 	private Integer maxPermissibleMassForAxis5;
-
-	@Column(name = "vehicle_assembly_max_permissible_mss")
 	private Integer vehicleAssemblyMaxPermissibleMss;
-
-	@Column(name = "mass_in_running_orders")
 	private Integer massInRunningOrders;
-
-	@Column(name = "real_mass")
 	private Integer realMass;
-
-	@Column(name = "length")
 	private Integer length;
-
-	@Column(name = "width")
 	private Integer width;
-
-	@Column(name = "height")
 	private Integer height;
-
-	@Column(name = "distance_between_the_axes")
 	private Integer distanceBetweenTheAxes;
-
-	@Column(name = "engine_code")
 	private Integer engineCode;
-
-	@Column(name = "cylinder_capacity")
 	private Integer cylinderCapacity;
-
-	@Column(name = "power")
 	private Integer power;
-
-	@Column(name = "fuel_type")
 	private String fuelType;
-
-	@Column(name = "rated_speed")
 	private Integer ratedSpeed;
-
-	@Column(name = "propulsyon_system")
 	private String propulsyonSystem;
-
-	@Column(name = "engine_series")
 	private String engineSeries;
-
-	@Column(name = "power_electric_motor")
 	private Integer powerElectricMotor;
-
-	@Column(name = "emissions_standard")
 	private String emissionsStandard;
-
-	@Column(name = "national_emission_code")
 	private String nationalEmissionCode;
-
-	@Column(name = "color")
 	private String color;
-
-	@Column(name = "seats_no")
 	private Integer seatsNo;
-
-	@Column(name = "standing_places_no")
 	private Integer standingPlacesNo;
-
-	@Column(name = "max_speed")
 	private Integer maxSpeed;
-
-	@Column(name = "stationary_sound_level")
 	private Integer stationarySoundLevel;
-
-	@Column(name = "engine_revving")
 	private Integer engineRevving;
-
-	@Column(name = "motion_sound_level")
-	private Integer motionSoundLevel;
-
-	@Column(name = "power_weight_ratio")
 	private Integer powerWeightRatio;
-
-	@Column(name = "co2")
 	private String co2;
-
-	@Column(name = "traction")
 	private String traction;
-
-	@Column(name = "front_axle_tires")
 	private String frontAxleTires;
-
-	@Column(name = "rear_axle_tires")
 	private String rearAxleTires;
-
-	@Column(name = "front_axle_suspension")
 	private String frontAxleSuspension;
-
-	@Column(name = "rear_axle_suspension")
 	private String rearAxleSuspension;
-
-	@Column(name = "tank_capacity")
 	private Integer tankCapacity;
-
-	@Column(name = "rar_office")
 	private Integer rarOffice;
-
-	@Column(name = "issue_date")
 	private LocalDate issueDate;
+	private Integer carId;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "car_id")
-	private Car car;
+	public Integer getCarId() {
+		return carId;
+	}
+
+	public void setCarId(Integer carId) {
+		this.carId = carId;
+	}
 
 	public Integer getId() {
 		return id;
@@ -578,14 +449,6 @@ public class VehicleIdentityCard {
 		this.engineRevving = engineRevving;
 	}
 
-	public Integer getMotionSoundLevel() {
-		return motionSoundLevel;
-	}
-
-	public void setMotionSoundLevel(Integer motionSoundLevel) {
-		this.motionSoundLevel = motionSoundLevel;
-	}
-
 	public Integer getPowerWeightRatio() {
 		return powerWeightRatio;
 	}
@@ -664,19 +527,6 @@ public class VehicleIdentityCard {
 
 	public void setIssueDate(LocalDate issueDate) {
 		this.issueDate = issueDate;
-	}
-
-	public Car getCar() {
-		return car;
-	}
-
-	public void setCar(Car car) {
-		this.car = car;
-	}
-
-	public void addCar(Car car2) {
-		this.car = car2;
-		car2.setVehicleIdentityCard(this);
 	}
 
 }

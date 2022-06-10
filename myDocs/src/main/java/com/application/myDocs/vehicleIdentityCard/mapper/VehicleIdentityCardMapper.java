@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 import com.application.myDocs.vehicleIdentityCard.VehicleIdentityCard;
+import com.application.myDocs.vehicleIdentityCard.dto.VehicleIdentityCardCreateDTO;
 import com.application.myDocs.vehicleIdentityCard.dto.VehicleIdentityCardDTO;
 
 @Component
@@ -97,7 +98,7 @@ public class VehicleIdentityCardMapper {
 		vehicleIdentityCard.setTypeApprovalNumber(vehicleIdentityCardDTO.getTypeApprovalNumber());
 		vehicleIdentityCard.setNationalRegisterNumber(vehicleIdentityCardDTO.getNationalRegisterNumber());
 		vehicleIdentityCard.setAxlesNumber(vehicleIdentityCardDTO.getAxlesNumber());
-		vehicleIdentityCard.setMaxPermissibleMass(vehicleIdentityCard.getMaxPermissibleMass());
+		vehicleIdentityCard.setMaxPermissibleMass(vehicleIdentityCardDTO.getMaxPermissibleMass());
 		vehicleIdentityCard.setMaxPermissibleMassForAxis1(vehicleIdentityCardDTO.getMaxPermissibleMassForAxis1());
 		vehicleIdentityCard.setMaxPermissibleMassForAxis2(vehicleIdentityCardDTO.getMaxPermissibleMassForAxis2());
 		vehicleIdentityCard.setMaxPermissibleMassForAxis3(vehicleIdentityCardDTO.getMaxPermissibleMassForAxis3());
@@ -145,5 +146,71 @@ public class VehicleIdentityCardMapper {
 	public List<VehicleIdentityCardDTO> vehicleIdentityCardList2VehicleIdentityCardDTO(List<VehicleIdentityCard> list) {
 		return list.stream().map(vehicleIdentityCard -> vehicleIdentityCard2VehicleIdentityCardDTO(vehicleIdentityCard))
 				.collect(Collectors.toList());
+	}
+
+	public VehicleIdentityCard vehicleIdentityCardCreateDTO2VehicleIdentityCard(
+			VehicleIdentityCardCreateDTO vehicleIdentityCardCreateDTO) {
+		VehicleIdentityCard vehicleIdentityCard = new VehicleIdentityCard();
+		vehicleIdentityCard.setId(vehicleIdentityCardCreateDTO.getId());
+		vehicleIdentityCard.setRegistrationNo(vehicleIdentityCardCreateDTO.getRegistrationNo());
+		vehicleIdentityCard.setRegistrationAuthority(vehicleIdentityCardCreateDTO.getRegistrationAuthority());
+		vehicleIdentityCard.setRegistrationDate(vehicleIdentityCardCreateDTO.getRegistrationDate());
+		vehicleIdentityCard.setMark(vehicleIdentityCardCreateDTO.getMark());
+		vehicleIdentityCard.setType(vehicleIdentityCardCreateDTO.getType());
+		vehicleIdentityCard.setVariant(vehicleIdentityCardCreateDTO.getVariant());
+		vehicleIdentityCard.setVersion(vehicleIdentityCardCreateDTO.getVersion());
+		vehicleIdentityCard.setTradeName(vehicleIdentityCardCreateDTO.getTradeName());
+		vehicleIdentityCard.setIdentificationNumber(vehicleIdentityCardCreateDTO.getIdentificationNumber());
+		vehicleIdentityCard.setManufactureYear(vehicleIdentityCardCreateDTO.getManufactureYear());
+		vehicleIdentityCard.setCategory(vehicleIdentityCardCreateDTO.getCategory());
+		vehicleIdentityCard.setUseCategory(vehicleIdentityCardCreateDTO.getUseCategory());
+		vehicleIdentityCard.setClasses(vehicleIdentityCardCreateDTO.getClasses());
+		vehicleIdentityCard.setCarrossery(vehicleIdentityCardCreateDTO.getCarrossery());
+		vehicleIdentityCard.setTypeApprovalNumber(vehicleIdentityCardCreateDTO.getTypeApprovalNumber());
+		vehicleIdentityCard.setNationalRegisterNumber(vehicleIdentityCardCreateDTO.getNationalRegisterNumber());
+		vehicleIdentityCard.setAxlesNumber(vehicleIdentityCardCreateDTO.getAxlesNumber());
+		vehicleIdentityCard.setMaxPermissibleMass(vehicleIdentityCardCreateDTO.getMaxPermissibleMass());
+		vehicleIdentityCard.setMaxPermissibleMassForAxis1(vehicleIdentityCardCreateDTO.getMaxPermissibleMassForAxis1());
+		vehicleIdentityCard.setMaxPermissibleMassForAxis2(vehicleIdentityCardCreateDTO.getMaxPermissibleMassForAxis2());
+		vehicleIdentityCard.setMaxPermissibleMassForAxis3(vehicleIdentityCardCreateDTO.getMaxPermissibleMassForAxis3());
+		vehicleIdentityCard.setMaxPermissibleMassForAxis4(vehicleIdentityCardCreateDTO.getMaxPermissibleMassForAxis4());
+		vehicleIdentityCard.setMaxPermissibleMassForAxis5(vehicleIdentityCardCreateDTO.getMaxPermissibleMassForAxis5());
+		vehicleIdentityCard.setVehicleAssemblyMaxPermissibleMss(
+				vehicleIdentityCardCreateDTO.getVehicleAssemblyMaxPermissibleMss());
+		vehicleIdentityCard.setMassInRunningOrders(vehicleIdentityCardCreateDTO.getMassInRunningOrders());
+		vehicleIdentityCard.setRealMass(vehicleIdentityCardCreateDTO.getRealMass());
+		vehicleIdentityCard.setLength(vehicleIdentityCardCreateDTO.getLength());
+		vehicleIdentityCard.setWidth(vehicleIdentityCardCreateDTO.getWidth());
+		vehicleIdentityCard.setHeight(vehicleIdentityCardCreateDTO.getHeight());
+		vehicleIdentityCard.setDistanceBetweenTheAxes(vehicleIdentityCardCreateDTO.getDistanceBetweenTheAxes());
+		vehicleIdentityCard.setEngineCode(vehicleIdentityCardCreateDTO.getEngineCode());
+		vehicleIdentityCard.setEngineCode(vehicleIdentityCardCreateDTO.getEngineCode());
+		vehicleIdentityCard.setCylinderCapacity(vehicleIdentityCardCreateDTO.getCylinderCapacity());
+		vehicleIdentityCard.setPower(vehicleIdentityCardCreateDTO.getPower());
+		vehicleIdentityCard.setFuelType(vehicleIdentityCardCreateDTO.getFuelType());
+		vehicleIdentityCard.setRatedSpeed(vehicleIdentityCardCreateDTO.getRatedSpeed());
+		vehicleIdentityCard.setPropulsyonSystem(vehicleIdentityCardCreateDTO.getPropulsyonSystem());
+		vehicleIdentityCard.setEngineSeries(vehicleIdentityCardCreateDTO.getEngineSeries());
+		vehicleIdentityCard.setPowerElectricMotor(vehicleIdentityCardCreateDTO.getPowerElectricMotor());
+		vehicleIdentityCard.setEmissionsStandard(vehicleIdentityCardCreateDTO.getEmissionsStandard());
+		vehicleIdentityCard.setNationalEmissionCode(vehicleIdentityCardCreateDTO.getNationalEmissionCode());
+		vehicleIdentityCard.setColor(vehicleIdentityCardCreateDTO.getColor());
+		vehicleIdentityCard.setSeatsNo(vehicleIdentityCardCreateDTO.getSeatsNo());
+		vehicleIdentityCard.setStandingPlacesNo(vehicleIdentityCardCreateDTO.getStandingPlacesNo());
+		vehicleIdentityCard.setMaxSpeed(vehicleIdentityCardCreateDTO.getMaxSpeed());
+		vehicleIdentityCard.setStationarySoundLevel(vehicleIdentityCardCreateDTO.getStationarySoundLevel());
+		vehicleIdentityCard.setEngineRevving(vehicleIdentityCardCreateDTO.getEngineRevving());
+		vehicleIdentityCard.setPowerWeightRatio(vehicleIdentityCardCreateDTO.getPowerWeightRatio());
+		vehicleIdentityCard.setCo2(vehicleIdentityCardCreateDTO.getCo2());
+		vehicleIdentityCard.setTraction(vehicleIdentityCardCreateDTO.getTraction());
+		vehicleIdentityCard.setFrontAxleTires(vehicleIdentityCardCreateDTO.getFrontAxleTires());
+		vehicleIdentityCard.setFrontAxleTires(vehicleIdentityCardCreateDTO.getFrontAxleTires());
+		vehicleIdentityCard.setRearAxleTires(vehicleIdentityCardCreateDTO.getRearAxleTires());
+		vehicleIdentityCard.setFrontAxleSuspension(vehicleIdentityCardCreateDTO.getFrontAxleSuspension());
+		vehicleIdentityCard.setRearAxleSuspension(vehicleIdentityCardCreateDTO.getRearAxleSuspension());
+		vehicleIdentityCard.setTankCapacity(vehicleIdentityCardCreateDTO.getTankCapacity());
+		vehicleIdentityCard.setRarOffice(vehicleIdentityCardCreateDTO.getRarOffice());
+		vehicleIdentityCard.setIssueDate(vehicleIdentityCardCreateDTO.getIssueDate());
+		return vehicleIdentityCard;
 	}
 }

@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 import com.application.myDocs.vehicleRegistrationCertificate.VehicleRegistrationCertificate;
+import com.application.myDocs.vehicleRegistrationCertificate.dto.VehicleRegistrationCertificateCreateDTO;
 import com.application.myDocs.vehicleRegistrationCertificate.dto.VehicleRegistrationCertificateDTO;
 
 @Component
@@ -71,5 +72,35 @@ public class VehicleRegistrationCertificateMapper {
 				.map(vehicleRegistrationCertificate -> vehicleRegistrationCertificate2VehicleRegistrationCertificateDTO(
 						vehicleRegistrationCertificate))
 				.collect(Collectors.toList());
+	}
+
+	public VehicleRegistrationCertificate vehicleRegistrationCertificateCreateDTO2VehicleRegistrationCertificate(
+			VehicleRegistrationCertificateCreateDTO vehicleRegistrationCertificateCreateDTO) {
+		VehicleRegistrationCertificate vehicleRegistrationCertificate = new VehicleRegistrationCertificate();
+		vehicleRegistrationCertificate.setId(vehicleRegistrationCertificateCreateDTO.getId());
+		vehicleRegistrationCertificate.setRegistrationNo(vehicleRegistrationCertificateCreateDTO.getRegistrationNo());
+		vehicleRegistrationCertificate.setCategoryId(vehicleRegistrationCertificateCreateDTO.getCategoryId());
+		vehicleRegistrationCertificate.setMark(vehicleRegistrationCertificateCreateDTO.getMark());
+		vehicleRegistrationCertificate.setModel(vehicleRegistrationCertificateCreateDTO.getModel());
+		vehicleRegistrationCertificate.setType(vehicleRegistrationCertificateCreateDTO.getType());
+		vehicleRegistrationCertificate.setVin(vehicleRegistrationCertificateCreateDTO.getVin());
+		vehicleRegistrationCertificate.setTypeApprovalNo(vehicleRegistrationCertificateCreateDTO.getTypeApprovalNo());
+		vehicleRegistrationCertificate
+				.setMaxPermissibleMass(vehicleRegistrationCertificateCreateDTO.getMaxPermissibleMass());
+		vehicleRegistrationCertificate
+				.setCylinderCapacity(vehicleRegistrationCertificateCreateDTO.getCylinderCapacity());
+		vehicleRegistrationCertificate.setFuelType(vehicleRegistrationCertificateCreateDTO.getFuelType());
+		vehicleRegistrationCertificate.setColor(vehicleRegistrationCertificateCreateDTO.getColor());
+		vehicleRegistrationCertificate.setSeatsNo(vehicleRegistrationCertificateCreateDTO.getSeatsNo());
+		vehicleRegistrationCertificate
+				.setStandingPlacesNo(vehicleRegistrationCertificateCreateDTO.getStandingPlacesNo());
+		vehicleRegistrationCertificate.setSuspended(vehicleRegistrationCertificateCreateDTO.isSuspended());
+		vehicleRegistrationCertificate.setMaxPower(vehicleRegistrationCertificateCreateDTO.getMaxPower());
+		vehicleRegistrationCertificate.setMassInService(vehicleRegistrationCertificateCreateDTO.getMassInService());
+		vehicleRegistrationCertificate
+				.setFirstRegistrationDate(vehicleRegistrationCertificateCreateDTO.getFirstRegistrationDate());
+		vehicleRegistrationCertificate.setDateOfIssue(vehicleRegistrationCertificateCreateDTO.getDateOfIssue());
+		vehicleRegistrationCertificate.setExpirationDate(vehicleRegistrationCertificateCreateDTO.getExpirationDate());
+		return vehicleRegistrationCertificate;
 	}
 }

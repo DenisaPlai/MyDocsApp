@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.application.myDocs.drivingLicense.dto.DrivingLicenseCreateDTO;
 import com.application.myDocs.drivingLicense.dto.DrivingLicenseDTO;
 import com.application.myDocs.drivingLicense.mapper.DrivingLicenseMapper;
 
@@ -36,6 +37,16 @@ public class DrivingLicenseController {
 
 	@GetMapping("/list")
 	public List<DrivingLicenseDTO> getAllDrivingLicense() {
-		return drivingLicenseMapper.drivingLicenseList2DrivingLicenseListDTO(drivingLicenseService.getAllDrivingLicense());
+		return drivingLicenseMapper
+				.drivingLicenseList2DrivingLicenseListDTO(drivingLicenseService.getAllDrivingLicense());
+	}
+
+	@PostMapping("/with-driver")
+	public DrivingLicenseDTO createDrivingLicenseWithDriver(
+			@RequestBody DrivingLicenseCreateDTO drivingLicenseCreateDTO) {
+		DrivingLicense createDrivingLicense = drivingLicenseService.createDrivingLicense(
+				drivingLicenseMapper.drivingLicenseCreateDTO2DrivingLicense(drivingLicenseCreateDTO),
+				drivingLicenseCreateDTO.getDriverId());
+		return drivingLicenseMapper.drivingLicense2DrivingLicenseDTO(createDrivingLicense);
 	}
 }

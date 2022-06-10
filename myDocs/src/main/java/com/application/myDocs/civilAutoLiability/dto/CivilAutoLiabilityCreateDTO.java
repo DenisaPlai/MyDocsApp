@@ -1,87 +1,34 @@
-package com.application.myDocs.civilAutoLiability;
+package com.application.myDocs.civilAutoLiability.dto;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-import com.application.myDocs.car.Car;
 import com.application.myDocs.carCategory.CarCategory;
 import com.application.myDocs.territorialValidity.TerritorialValidity;
 
-@Entity
-@Table(name = "civil_auto_liability", schema = "administration")
-public class CivilAutoLiability {
-
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CivilAutoLiabilityCreateDTO {
 	private Integer id;
-
-	@Column(name = "valid_from")
 	private LocalDate validFrom;
-
-	@Column(name = "valid_to")
 	private LocalDate validTo;
-
-	@Column(name = "issued_by")
 	private String issuedBy;
-
-	@Column(name = "registration_no")
 	private String registrationNo;
-
-	@Enumerated(EnumType.STRING)
-	@Column(name = "country_code")
 	private TerritorialValidity countryCode;
-
-	@Column(name = "number")
 	private String number;
-
-	@Column(name = "series")
 	private String series;
-
-	@Enumerated(EnumType.STRING)
-	@Column(name = "vehicle_category")
 	private CarCategory vehicleCategory;
-
-	@Column(name = "make_of_vehicle")
 	private String makeOfVehicle;
-
-	@Enumerated(EnumType.STRING)
-	@Column(name = "territorial_validity")
 	private TerritorialValidity territorialValidity;
-
-	@Column(name = "limit_compensation_for_material_damage")
 	private Integer limitCompensationForMaterialDamage;
-
-	@Column(name = "limit_compensation_for_personal_injury")
 	private Integer limitCompensationForPersonalInjury;
-
-	@Column(name = "observation")
 	private String observation;
-
-	@Column(name = "price")
 	private Integer price;
+	private Integer carId;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "car_id")
-	private Car car;
-
-	public Car getCar() {
-		return car;
+	public Integer getCarId() {
+		return carId;
 	}
 
-	public void setCar(Car car) {
-		this.car = car;
+	public void setCarId(Integer carId) {
+		this.carId = carId;
 	}
 
 	public Integer getId() {
@@ -148,6 +95,14 @@ public class CivilAutoLiability {
 		this.series = series;
 	}
 
+	public CarCategory getVehicleCategory() {
+		return vehicleCategory;
+	}
+
+	public void setVehicleCategory(CarCategory vehicleCategory) {
+		this.vehicleCategory = vehicleCategory;
+	}
+
 	public String getMakeOfVehicle() {
 		return makeOfVehicle;
 	}
@@ -194,19 +149,6 @@ public class CivilAutoLiability {
 
 	public void setPrice(Integer price) {
 		this.price = price;
-	}
-
-	public CarCategory getVehicleCategory() {
-		return vehicleCategory;
-	}
-
-	public void setVehicleCategory(CarCategory vehicleCategory) {
-		this.vehicleCategory = vehicleCategory;
-	}
-
-	public void addCar(Car car2) {
-		this.car = car2;
-		car2.setCivilAutoLiability(this);
 	}
 
 }

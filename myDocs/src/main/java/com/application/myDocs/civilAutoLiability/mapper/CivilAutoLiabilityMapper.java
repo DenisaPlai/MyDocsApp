@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 import com.application.myDocs.civilAutoLiability.CivilAutoLiability;
+import com.application.myDocs.civilAutoLiability.dto.CivilAutoLiabilityCreateDTO;
 import com.application.myDocs.civilAutoLiability.dto.CivilAutoLiabilityDTO;
 
 @Component
@@ -57,5 +58,27 @@ public class CivilAutoLiabilityMapper {
 
 	public List<CivilAutoLiabilityDTO> civilAutoLiabilityList2CivilAutoLiabilityListDTO(List<CivilAutoLiability> list) {
 		return list.stream().map(cal -> civilAutoLiability2CivilAutoLiabilityDTO(cal)).collect(Collectors.toList());
+	}
+
+	public CivilAutoLiability civilAutoLiabilityCreateDTO2CivilAutoLiability(
+			CivilAutoLiabilityCreateDTO civilAutoLiabilityCreateDTO) {
+		CivilAutoLiability civilAutoLiability = new CivilAutoLiability();
+		civilAutoLiability.setValidFrom(civilAutoLiabilityCreateDTO.getValidFrom());
+		civilAutoLiability.setValidTo(civilAutoLiabilityCreateDTO.getValidTo());
+		civilAutoLiability.setIssuedBy(civilAutoLiabilityCreateDTO.getIssuedBy());
+		civilAutoLiability.setRegistrationNo(civilAutoLiabilityCreateDTO.getRegistrationNo());
+		civilAutoLiability.setCountryCode(civilAutoLiabilityCreateDTO.getCountryCode());
+		civilAutoLiability.setCountryCode(civilAutoLiabilityCreateDTO.getCountryCode());
+		civilAutoLiability.setSeries(civilAutoLiabilityCreateDTO.getSeries());
+		civilAutoLiability.setVehicleCategory(civilAutoLiabilityCreateDTO.getVehicleCategory());
+		civilAutoLiability.setMakeOfVehicle(civilAutoLiabilityCreateDTO.getMakeOfVehicle());
+		civilAutoLiability.setTerritorialValidity(civilAutoLiabilityCreateDTO.getTerritorialValidity());
+		civilAutoLiability.setLimitCompensationForMaterialDamage(
+				civilAutoLiabilityCreateDTO.getLimitCompensationForMaterialDamage());
+		civilAutoLiability.setLimitCompensationForPersonalInjury(
+				civilAutoLiabilityCreateDTO.getLimitCompensationForPersonalInjury());
+		civilAutoLiability.setObservation(civilAutoLiabilityCreateDTO.getObservation());
+		civilAutoLiability.setPrice(civilAutoLiabilityCreateDTO.getPrice());
+		return civilAutoLiability;
 	}
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.application.myDocs.identityCard.dto.IdentityCardCreateDTO;
 import com.application.myDocs.identityCard.dto.IdentityCardDTO;
 import com.application.myDocs.identityCard.mapper.IdentityCardMapper;
 
@@ -38,5 +39,13 @@ public class IdentityCardController {
 	@GetMapping("/list")
 	public List<IdentityCardDTO> getAllIdentityCard() {
 		return identityCardMapper.identityCardList2IdentityCardListDTO(identityCardService.getAllIdentityCard());
+	}
+
+	@PostMapping("/with-driver")
+	public IdentityCardDTO createIdentityCardWithDriver(@RequestBody IdentityCardCreateDTO identityCardCreateDTO) {
+		IdentityCard createIdentityCard = identityCardService.createIdentityCard(
+				identityCardMapper.identityCardCreateDTO2IdentityCard(identityCardCreateDTO),
+				identityCardCreateDTO.getDriverId());
+		return identityCardMapper.identityCard2IdentityCardDTO(createIdentityCard);
 	}
 }

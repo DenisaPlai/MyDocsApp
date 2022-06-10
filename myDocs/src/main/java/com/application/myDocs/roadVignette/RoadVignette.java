@@ -91,4 +91,9 @@ public class RoadVignette {
 		this.car = car;
 	}
 
+	public void addCar(Car car2) {
+		this.car = car2;
+		car2.setRoadVignettes(this);
+	}
+
 }

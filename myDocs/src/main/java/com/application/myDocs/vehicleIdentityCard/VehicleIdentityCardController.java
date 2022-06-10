@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.application.myDocs.vehicleIdentityCard.dto.VehicleIdentityCardCreateDTO;
 import com.application.myDocs.vehicleIdentityCard.dto.VehicleIdentityCardDTO;
 import com.application.myDocs.vehicleIdentityCard.mapper.VehicleIdentityCardMapper;
 
@@ -37,5 +38,12 @@ public class VehicleIdentityCardController {
 	@GetMapping("/list")
 	public List<VehicleIdentityCardDTO> getAllVehicleIdentityCard() {
 		return vicMapper.vehicleIdentityCardList2VehicleIdentityCardDTO(vicService.getAllVic());
+	}
+
+	@PostMapping("/with-car")
+	public VehicleIdentityCardDTO createVicWithCar(@RequestBody VehicleIdentityCardCreateDTO vicCreateDTO) {
+		VehicleIdentityCard createVic = vicService.createVic(
+				vicMapper.vehicleIdentityCardCreateDTO2VehicleIdentityCard(vicCreateDTO), vicCreateDTO.getCarId());
+		return vicMapper.vehicleIdentityCard2VehicleIdentityCardDTO(createVic);
 	}
 }

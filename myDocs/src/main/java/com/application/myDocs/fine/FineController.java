@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.application.myDocs.fine.dto.FineCreateDTO;
 import com.application.myDocs.fine.dto.FineDTO;
 import com.application.myDocs.fine.mapper.FineMapper;
 
@@ -37,6 +38,13 @@ public class FineController {
 	@GetMapping("/list")
 	public List<FineDTO> getAllFine() {
 		return fineMapper.fineList2FineListDTO(fineService.getAllFine());
+	}
+	
+	@PostMapping("/with-check")
+	public FineDTO createFineWithCheck(@RequestBody FineCreateDTO fineCreateDTO) {
+		Fine createFine = fineService.createFine(fineMapper.fineCreateDTO2Fine(fineCreateDTO),
+				fineCreateDTO.getCheckId());
+		return fineMapper.fine2FineDTO(createFine);
 	}
 
 }

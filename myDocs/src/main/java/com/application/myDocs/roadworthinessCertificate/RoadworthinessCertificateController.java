@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.application.myDocs.roadworthinessCertificate.dto.RoadworthinessCertificateCreateDTO;
 import com.application.myDocs.roadworthinessCertificate.dto.RoadworthinessCertificateDTO;
 import com.application.myDocs.roadworthinessCertificate.mapper.RoadworthinessCertificateMapper;
 
@@ -40,5 +41,13 @@ public class RoadworthinessCertificateController {
 	public List<RoadworthinessCertificateDTO> getAllRoadworthinessCertificate() {
 		return rcMapper.roadworthinessCertificateList2RoadworthinessCertificateListDTO(
 				rcService.getAllRoadworthinessCertificate());
+	}
+
+	@PostMapping("/with-car")
+	public RoadworthinessCertificateDTO createRcWithCar(@RequestBody RoadworthinessCertificateCreateDTO rcCreateDTO) {
+		RoadworthinessCertificate createRc = rcService.createRoadworthinessCertificate(
+				rcMapper.roadworthinessCertificateCreateDTO2RoadworthinessCertificate(rcCreateDTO),
+				rcCreateDTO.getCarId());
+		return rcMapper.roadworthinessCertificate2RoadworthinessCertificateDTO(createRc);
 	}
 }

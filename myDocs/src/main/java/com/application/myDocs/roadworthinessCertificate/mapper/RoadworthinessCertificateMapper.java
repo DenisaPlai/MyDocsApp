@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 import com.application.myDocs.roadworthinessCertificate.RoadworthinessCertificate;
+import com.application.myDocs.roadworthinessCertificate.dto.RoadworthinessCertificateCreateDTO;
 import com.application.myDocs.roadworthinessCertificate.dto.RoadworthinessCertificateDTO;
 
 @Component
@@ -51,5 +52,22 @@ public class RoadworthinessCertificateMapper {
 			List<RoadworthinessCertificate> list) {
 		return list.stream().map(rc -> roadworthinessCertificate2RoadworthinessCertificateDTO(rc))
 				.collect(Collectors.toList());
+	}
+
+	public RoadworthinessCertificate roadworthinessCertificateCreateDTO2RoadworthinessCertificate(
+			RoadworthinessCertificateCreateDTO rcCreateDTO) {
+		RoadworthinessCertificate rc = new RoadworthinessCertificate();
+		rc.setVinNumber(rcCreateDTO.getVinNumber());
+		rc.setCountrySymbol(rcCreateDTO.getCountrySymbol());
+		rc.setRegistrationNo(rcCreateDTO.getRegistrationNo());
+		rc.setPlace(rcCreateDTO.getPlace());
+		rc.setDate(rcCreateDTO.getDate());
+		rc.setOdometer(rcCreateDTO.getOdometer());
+		rc.setVehicleClass(rcCreateDTO.getVehicleClass());
+		rc.setOverallAssessment(rcCreateDTO.getOverallAssessment());
+		rc.setDateOfNextPeriodicalTest(rcCreateDTO.getDateOfNextPeriodicalTest());
+		rc.setInspectionOrganisationName(rcCreateDTO.getInspectionOrganisationName());
+		rc.setEntryInTheNationalDb(rcCreateDTO.getEntryInTheNationalDb());
+		return rc;
 	}
 }

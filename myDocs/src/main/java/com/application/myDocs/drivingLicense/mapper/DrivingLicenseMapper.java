@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 import com.application.myDocs.drivingLicense.DrivingLicense;
+import com.application.myDocs.drivingLicense.dto.DrivingLicenseCreateDTO;
 import com.application.myDocs.drivingLicense.dto.DrivingLicenseDTO;
 
 @Component
@@ -40,6 +41,18 @@ public class DrivingLicenseMapper {
 	public List<DrivingLicenseDTO> drivingLicenseList2DrivingLicenseListDTO(List<DrivingLicense> list) {
 		return list.stream().map(drivingLicense -> drivingLicense2DrivingLicenseDTO(drivingLicense))
 				.collect(Collectors.toList());
+	}
 
+	public DrivingLicense drivingLicenseCreateDTO2DrivingLicense(DrivingLicenseCreateDTO drivingLicenseCreateDTO) {
+		DrivingLicense drivingLicense = new DrivingLicense();
+		drivingLicense.setId(drivingLicenseCreateDTO.getId());
+		drivingLicense.setFirstName(drivingLicenseCreateDTO.getFirstName());
+		drivingLicense.setLastName(drivingLicenseCreateDTO.getLastName());
+		drivingLicense.setDateOfBirth(drivingLicenseCreateDTO.getDateOfBirth());
+		drivingLicense.setPlaceOfBirth(drivingLicenseCreateDTO.getPlaceOfBirth());
+		drivingLicense.setNumber(drivingLicenseCreateDTO.getNumber());
+		drivingLicense.setIssuedBy(drivingLicenseCreateDTO.getIssuedBy());
+		drivingLicense.setSuspended(drivingLicenseCreateDTO.isSuspended());
+		return drivingLicense;
 	}
 }

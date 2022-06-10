@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 import com.application.myDocs.identityCard.IdentityCard;
+import com.application.myDocs.identityCard.dto.IdentityCardCreateDTO;
 import com.application.myDocs.identityCard.dto.IdentityCardDTO;
 
 @Component
@@ -43,12 +44,30 @@ public class IdentityCardMapper {
 		identityCard.setIssuedBy(identityCardDTO.getIssuedBy());
 		identityCard.setIssuedDate(identityCardDTO.getIssuedDate());
 		identityCard.setExpirationDate(identityCardDTO.getExpirationDate());
-		identityCard.setSex(identityCard.getSex());
+		identityCard.setSex(identityCardDTO.getSex());
 		return identityCard;
 	}
 
 	public List<IdentityCardDTO> identityCardList2IdentityCardListDTO(List<IdentityCard> list) {
 		return list.stream().map(identityCard -> identityCard2IdentityCardDTO(identityCard))
 				.collect(Collectors.toList());
+	}
+
+	public IdentityCard identityCardCreateDTO2IdentityCard(IdentityCardCreateDTO identityCardCreateDTO) {
+		IdentityCard identityCard = new IdentityCard();
+		identityCard.setId(identityCardCreateDTO.getId());
+		identityCard.setCnp(identityCardCreateDTO.getCnp());
+		identityCard.setSerie(identityCardCreateDTO.getSerie());
+		identityCard.setNumber(identityCardCreateDTO.getNumber());
+		identityCard.setFirstName(identityCardCreateDTO.getFirstName());
+		identityCard.setLastName(identityCardCreateDTO.getLastName());
+		identityCard.setNationality(identityCardCreateDTO.getNationality());
+		identityCard.setPlaceOfBirth(identityCardCreateDTO.getPlaceOfBirth());
+		identityCard.setAddress(identityCardCreateDTO.getAddress());
+		identityCard.setIssuedBy(identityCardCreateDTO.getIssuedBy());
+		identityCard.setIssuedDate(identityCardCreateDTO.getIssuedDate());
+		identityCard.setExpirationDate(identityCardCreateDTO.getExpirationDate());
+		identityCard.setSex(identityCardCreateDTO.getSex());
+		return identityCard;
 	}
 }
