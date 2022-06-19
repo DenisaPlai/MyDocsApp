@@ -14,6 +14,7 @@ import javax.persistence.Table;
 
 import com.application.myDocs.carCategory.CarCategory;
 import com.application.myDocs.roadworthinessCertificate.RoadworthinessCertificate;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "defects", schema = "administration")
@@ -24,6 +25,7 @@ public class Defects {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "roadworthiness_certificate_id")
 	private RoadworthinessCertificate roadworthinessCertificate;

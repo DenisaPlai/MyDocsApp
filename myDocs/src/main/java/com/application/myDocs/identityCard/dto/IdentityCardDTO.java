@@ -7,7 +7,6 @@ import com.application.myDocs.gender.Gender;
 public class IdentityCardDTO {
 
 	private Integer id;
-	private String cnp;
 	private String serie;
 	private String number;
 	private String firstName;
@@ -26,14 +25,6 @@ public class IdentityCardDTO {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getCnp() {
-		return cnp;
-	}
-
-	public void setCnp(String cnp) {
-		this.cnp = cnp;
 	}
 
 	public String getSerie() {

@@ -13,6 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.application.myDocs.check.Check;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "fine", schema = "administration")
@@ -38,6 +39,7 @@ public class Fine {
 	@Column(name = "observations")
 	private String observations;
 
+	@JsonIgnore
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "check_id")
 	private Check check;

@@ -16,6 +16,7 @@ import javax.persistence.Table;
 
 import com.application.myDocs.car.Car;
 import com.application.myDocs.carCategory.CarCategory;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "vehicle_identity_card", schema = "administration")
@@ -198,6 +199,7 @@ public class VehicleIdentityCard {
 	@Column(name = "issue_date")
 	private LocalDate issueDate;
 
+	@JsonIgnore
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "car_id")
 	private Car car;

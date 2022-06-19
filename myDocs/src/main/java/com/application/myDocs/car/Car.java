@@ -24,6 +24,7 @@ import com.application.myDocs.roadVignette.RoadVignette;
 import com.application.myDocs.roadworthinessCertificate.RoadworthinessCertificate;
 import com.application.myDocs.vehicleIdentityCard.VehicleIdentityCard;
 import com.application.myDocs.vehicleRegistrationCertificate.VehicleRegistrationCertificate;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "car", schema = "administration")
@@ -50,6 +51,7 @@ public class Car {
 			CascadeType.REMOVE }, orphanRemoval = true)
 	private List<RoadVignette> roadVignettes = new ArrayList<>();
 
+	@JsonIgnore
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "driver_car", schema = "administration", joinColumns = @JoinColumn(name = "driver_id"), inverseJoinColumns = @JoinColumn(name = "car_id"))
 	private Set<Driver> drivers;

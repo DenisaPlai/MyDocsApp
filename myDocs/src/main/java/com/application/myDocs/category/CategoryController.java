@@ -41,9 +41,11 @@ public class CategoryController {
 	}
 
 	@PostMapping("/with-drivingLicense")
-	public CategoryDTO createCategoryWithDrivingLicense(@RequestBody CategoryCreateDTO categoryCreateDTO) {
+	public CategoryDTO createCategoryWithDrivingLicense
+	(@RequestBody CategoryCreateDTO categoryCreateDTO) {
 		Category createCategory = categoryService.createCategory(
-				categoryMapper.categoryCreateDTO2Category(categoryCreateDTO), categoryCreateDTO.getDrivingLicenseID());
+				categoryMapper.categoryCreateDTO2Category(categoryCreateDTO),
+				categoryCreateDTO.getDrivingLicenseID());
 		return categoryMapper.category2CategoryDTO(createCategory);
 	}
 }

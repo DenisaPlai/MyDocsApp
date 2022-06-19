@@ -54,6 +54,8 @@ public class Driver {
 	@ManyToMany(mappedBy = "drivers")
 	private List<Car> cars = new ArrayList<>();
 
+	
+	
 	public String getCnp() {
 		return cnp;
 	}
@@ -128,11 +130,6 @@ public class Driver {
 
 	public void addCheck(Check ckeck) {
 		this.ckecks.add(ckeck);
-		ckeck.setUser(this);
-	}
-
-	public void removeCheck(Check ckeck) {
-		this.ckecks.remove(ckeck);
-		ckeck.setUser(null);
+		ckeck.setDriver(this);
 	}
 }

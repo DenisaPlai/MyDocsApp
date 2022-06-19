@@ -16,6 +16,7 @@ import javax.persistence.Table;
 
 import com.application.myDocs.driver.Driver;
 import com.application.myDocs.gender.Gender;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "identity_card", schema = "administration")
@@ -25,9 +26,6 @@ public class IdentityCard {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
-	@Column(name = "cnp")
-	private String cnp;
 
 	@Column(name = "serie")
 	private String serie;
@@ -63,6 +61,7 @@ public class IdentityCard {
 	@Column(name = "sex")
 	private Gender sex;
 
+	@JsonIgnore
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "driver_id")
 	private Driver driver;
@@ -73,14 +72,6 @@ public class IdentityCard {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getCnp() {
-		return cnp;
-	}
-
-	public void setCnp(String cnp) {
-		this.cnp = cnp;
 	}
 
 	public String getSerie() {

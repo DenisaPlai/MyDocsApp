@@ -16,6 +16,7 @@ import javax.persistence.Table;
 
 import com.application.myDocs.car.Car;
 import com.application.myDocs.territorialValidity.TerritorialValidity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "road_vignette", schema = "administration")
@@ -39,6 +40,7 @@ public class RoadVignette {
 	@Column(name = "registration_no")
 	private String registrationNo;
 
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "car_id")
 	private Car car;

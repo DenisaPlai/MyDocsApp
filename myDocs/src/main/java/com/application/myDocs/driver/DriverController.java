@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.application.myDocs.driver.dto.DriverDTO;
+import com.application.myDocs.driver.dto.GetDriverDTO;
 import com.application.myDocs.driver.mapper.DriverMapper;
 
 @RestController
@@ -44,6 +45,11 @@ public class DriverController {
 	@GetMapping("/byCnp")
 	public DriverDTO getDriverByCnp(@RequestParam String cnp) {
 		return driverMapper.driver2DriverDTO(driverService.getDriverByCnp(cnp));
+	}
+	
+	@GetMapping("/byCnpWithDocs")
+	public GetDriverDTO getDriverByCnpDoc(@RequestParam String cnp) {
+		return driverMapper.driver2GetDriverDTO(driverService.getDriverByCnp(cnp));
 	}
 
 	@PutMapping("/{id}")

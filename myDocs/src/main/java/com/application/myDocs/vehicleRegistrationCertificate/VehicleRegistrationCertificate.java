@@ -16,6 +16,7 @@ import javax.persistence.Table;
 
 import com.application.myDocs.car.Car;
 import com.application.myDocs.carCategory.CarCategory;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "vehicle_registration_certificate", schema = "administration")
@@ -84,6 +85,7 @@ public class VehicleRegistrationCertificate {
 	@Column(name = "expiration_date")
 	private LocalDate expirationDate;
 
+	@JsonIgnore  
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "car_id")
 	private Car car;

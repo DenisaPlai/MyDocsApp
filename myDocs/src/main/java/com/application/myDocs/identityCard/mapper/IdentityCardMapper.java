@@ -15,7 +15,6 @@ public class IdentityCardMapper {
 	public IdentityCardDTO identityCard2IdentityCardDTO(IdentityCard identityCard) {
 		IdentityCardDTO identityCardDTO = new IdentityCardDTO();
 		identityCardDTO.setId(identityCard.getId());
-		identityCardDTO.setCnp(identityCard.getCnp());
 		identityCardDTO.setSerie(identityCard.getSerie());
 		identityCardDTO.setNumber(identityCard.getNumber());
 		identityCardDTO.setFirstName(identityCard.getFirstName());
@@ -33,7 +32,6 @@ public class IdentityCardMapper {
 	public IdentityCard identityCardDTO2IdentityCard(IdentityCardDTO identityCardDTO) {
 		IdentityCard identityCard = new IdentityCard();
 		identityCard.setId(identityCardDTO.getId());
-		identityCard.setCnp(identityCardDTO.getCnp());
 		identityCard.setSerie(identityCardDTO.getSerie());
 		identityCard.setNumber(identityCardDTO.getNumber());
 		identityCard.setFirstName(identityCardDTO.getFirstName());
@@ -56,7 +54,6 @@ public class IdentityCardMapper {
 	public IdentityCard identityCardCreateDTO2IdentityCard(IdentityCardCreateDTO identityCardCreateDTO) {
 		IdentityCard identityCard = new IdentityCard();
 		identityCard.setId(identityCardCreateDTO.getId());
-		identityCard.setCnp(identityCardCreateDTO.getCnp());
 		identityCard.setSerie(identityCardCreateDTO.getSerie());
 		identityCard.setNumber(identityCardCreateDTO.getNumber());
 		identityCard.setFirstName(identityCardCreateDTO.getFirstName());

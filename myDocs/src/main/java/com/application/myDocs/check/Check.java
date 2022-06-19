@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import com.application.myDocs.driver.Driver;
 import com.application.myDocs.fine.Fine;
 import com.application.myDocs.police.Police;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "check", schema = "administration")
@@ -28,10 +29,12 @@ public class Check {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "driver_id")
 	private Driver driver;
 
+	@JsonIgnore
 	@ManyToOne()
 	@JoinColumn(name = "police_id")
 	private Police police;
@@ -59,11 +62,11 @@ public class Check {
 		this.id = id;
 	}
 
-	public Driver getUser() {
+	public Driver getDriver() {
 		return driver;
 	}
 
-	public void setUser(Driver driver) {
+	public void setDriver(Driver driver) {
 		this.driver = driver;
 	}
 

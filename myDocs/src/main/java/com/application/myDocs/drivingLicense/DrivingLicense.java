@@ -18,6 +18,7 @@ import javax.persistence.Table;
 
 import com.application.myDocs.category.Category;
 import com.application.myDocs.driver.Driver;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "driving_license", schema = "administration")
@@ -49,6 +50,7 @@ public class DrivingLicense {
 	@Column(name = "suspended")
 	private boolean suspended = false;
 
+	@JsonIgnore
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "driver_id")
 	private Driver driver;

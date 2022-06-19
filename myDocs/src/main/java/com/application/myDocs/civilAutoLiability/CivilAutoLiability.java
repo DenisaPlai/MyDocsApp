@@ -17,6 +17,7 @@ import javax.persistence.Table;
 import com.application.myDocs.car.Car;
 import com.application.myDocs.carCategory.CarCategory;
 import com.application.myDocs.territorialValidity.TerritorialValidity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "civil_auto_liability", schema = "administration")
@@ -72,6 +73,7 @@ public class CivilAutoLiability {
 	@Column(name = "price")
 	private Integer price;
 
+	@JsonIgnore
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "car_id")
 	private Car car;
