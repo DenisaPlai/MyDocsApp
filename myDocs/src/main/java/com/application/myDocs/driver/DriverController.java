@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,5 +44,11 @@ public class DriverController {
 	@GetMapping("/byCnp")
 	public DriverDTO getDriverByCnp(@RequestParam String cnp) {
 		return driverMapper.driver2DriverDTO(driverService.getDriverByCnp(cnp));
+	}
+
+	@PutMapping("/{id}")
+	public DriverDTO updateDriver(@RequestBody DriverDTO driverDTO, @PathVariable Integer id) {
+		Driver driver = driverService.updateDriverById(driverMapper.driverDTO2Driver(driverDTO), id);
+		return driverMapper.driver2DriverDTO(driver);
 	}
 }

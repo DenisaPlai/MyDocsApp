@@ -41,4 +41,14 @@ public class DriverService {
 		return driverRepository.findByIdIn(driverIds);
 	}
 
+	public Driver updateDriverById(Driver driver, Integer id) {
+		Driver updateDriver = getDriverById(id);
+		updateDriver.setCnp(driver.getCnp());;
+		updateDriver.setTotalPenaltyPoints(driver.getTotalPenaltyPoints());
+		updateDriver.setUnpaidFines(driver.isUnpaidFines());
+		updateDriver.setExpiredDocuments(driver.isExpiredDocuments());
+		driverRepository.flush();
+		return null;
+	}
+
 }
